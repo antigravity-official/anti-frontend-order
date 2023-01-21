@@ -1,0 +1,4 @@
+{
+  // give me create-react-app base eslintrc file contents
+  "extends": "react-app"
+}
