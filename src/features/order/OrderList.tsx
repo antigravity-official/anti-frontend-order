@@ -9,7 +9,7 @@ export default function OrderList() {
   if (isLoading) {
     return (
       <Box sx={{ display: 'flex', justifyContent: 'center' }}>
-        <CircularProgress />;
+        <CircularProgress />
       </Box>
     );
   }

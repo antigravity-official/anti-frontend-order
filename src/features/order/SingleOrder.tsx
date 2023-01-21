@@ -1,4 +1,4 @@
-import OrderProductList from '@/features/order/order-product/OrderProductList';
+import OrderShippingList from '@/features/order/order-shipping/OrderShippingList';
 import Order from '@/types/Order';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import {
@@ -60,9 +60,7 @@ export default function SingleOrder(
         </ExpandMore>
       </CardActions>
       <Collapse in={isExpanded} timeout="auto" unmountOnExit>
-        <CardContent>
-          <OrderProductList products={props.products} />
-        </CardContent>
+        <OrderShippingList orderShippings={props.shippings} />
       </Collapse>
     </Card>
   );
