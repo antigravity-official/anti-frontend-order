@@ -3,7 +3,7 @@ import orderFixture from '../fixtures/order.json';
 
 const ordersHandlers = [
   rest.get('/api/v1/orders', (req, res, ctx) => {
-    return res(ctx.json([orderFixture]));
+    return res(ctx.delay(2000), ctx.json([orderFixture]));
   }),
   rest.get('/api/v1/orders/:id', (req, res, ctx) => {
     const { id } = req.params;

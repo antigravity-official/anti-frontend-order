@@ -1,7 +1,7 @@
 import { rest } from 'msw';
 
 const errorHandlers = [
-  rest.all('*', (req, res, ctx) => {
+  rest.all('/api/*', (req, res, ctx) => {
     return res(ctx.status(404));
   }),
 ];
