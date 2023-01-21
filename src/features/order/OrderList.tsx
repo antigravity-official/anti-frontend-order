@@ -1,13 +1,17 @@
 import SingleOrder from '@/features/order/SingleOrder';
 import useOrderList from '@/features/order/useOrderList';
-import { CircularProgress, Typography } from '@mui/material';
+import { Box, CircularProgress, Typography } from '@mui/material';
 import { Stack } from '@mui/system';
 
 export default function OrderList() {
   const [{ isLoading, orders, error }] = useOrderList();
 
   if (isLoading) {
-    <CircularProgress />;
+    return (
+      <Box sx={{ display: 'flex', justifyContent: 'center' }}>
+        <CircularProgress />;
+      </Box>
+    );
   }
 
   if (error) {

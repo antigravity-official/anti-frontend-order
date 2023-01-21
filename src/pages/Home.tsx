@@ -1,10 +1,9 @@
-import React from 'react';
-import OrderList from '@/features/order/OrderList';
+import { Typography } from '@mui/material';
 
 export default function HomePage() {
   return (
     <>
-      <OrderList />
+      <Typography variant="h5">Home</Typography>
     </>
   );
 }
