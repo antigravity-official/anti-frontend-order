@@ -48,7 +48,7 @@ export default function SingleOrderProduct(
 ) {
   return (
     <>
-      <Box sx={{ display: 'flex', flexDirection: 'row' }}>
+      <Box sx={{ display: 'flex', flexDirection: 'row', px: 1 }}>
         <Box sx={{ flex: 1 }}>
           <Typography>{props.name}</Typography>
           <Typography>{props.price}원</Typography>
