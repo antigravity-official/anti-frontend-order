@@ -1,26 +1,48 @@
 {
+  "extends": "./node_modules/gts/tsconfig-google.json",
   "compilerOptions": {
+    "skipLibCheck": true,
+    "moduleResolution": "node",
     "target": "es5",
+    "module": "commonjs",
     "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
+      "es6",
+      "dom"
     ],
     "allowJs": true,
-    "skipLibCheck": true,
-    "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true,
+    "outDir": "build",
+    "rootDir": ".",
     "strict": true,
-    "forceConsistentCasingInFileNames": true,
-    "noFallthroughCasesInSwitch": true,
-    "module": "esnext",
-    "moduleResolution": "node",
+    "noImplicitAny": true,
+    "esModuleInterop": true,
     "resolveJsonModule": true,
-    "isolatedModules": true,
-    "noEmit": true,
-    "jsx": "react-jsx"
+    "forceConsistentCasingInFileNames": false,
+    "baseUrl": ".",
+    "paths": {
+      "@adapters/*": [
+        "src/adapters/*"
+      ],
+      "@domains/*": [
+        "src/domains/*"
+      ],
+      "@frameworks/*": [
+        "src/frameworks/*"
+      ],
+      "@hooks/*": [
+        "src/frameworks/web/hooks/*"
+      ],
+      "@di/*": [
+        "src/frameworks/di/index.ts"
+      ]
+    }
+  },
+  "ts-node": {
+    "compilerOptions": {
+      "module": "CommonJS"
+    }
   },
   "include": [
-    "src"
+    "src/**/*.ts",
+    "test/**/*.ts"
   ]
 }

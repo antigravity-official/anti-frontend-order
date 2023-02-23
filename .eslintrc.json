@@ -1,0 +1,12 @@
+{
+  "extends": "./node_modules/gts/",
+  "ignorePatterns": [
+    "mock-server/**"
+  ],
+  "rules": {
+    "@typescript-eslint/no-explicit-any": "off",
+    "@typescript-eslint/no-inferrable-types": "off",
+    "@typescript-eslint/ban-ts-comment": "off",
+    "node/no-unpublished-require": "off"
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "name": "anti-web-order",
+  "version": "0.1.0",
+  "description": "Clean architecture based react project sample code",
+  "scripts": {
+    "start": "webpack-dev-server --mode development"
+  },
+  "author": "antigravity Co, LTD.",
+  "license": "WTFPL",
+  "devDependencies": {
+    "@types/react": "^18.0.26",
+    "@types/react-dom": "^18.0.9",
+    "body-parser": "^1.19.0",
+    "html-webpack-plugin": "^5.5.0",
+    "process": "^0.11.10",
+    "ts-loader": "^9.4.2",
+    "typescript": "^4.9.3",
+    "webpack": "^5.75.0",
+    "webpack-cli": "^5.0.1",
+    "webpack-dev-server": "^4.11.1"
+  },
+  "dependencies": {
+    "@testing-library/jest-dom": "^5.16.5",
+    "@testing-library/react": "^13.4.0",
+    "@testing-library/user-event": "^13.5.0",
+    "@types/jest": "^27.5.2",
+    "@types/react-redux": "^7.1.5",
+    "jest-dom": "^4.0.0",
+    "mobx": "^6.7.0",
+    "mobx-react": "^7.6.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "ts-jest": "^29.0.3"
+  },
+  "_moduleAliases": {
+    "@adapters": "../../../adapters",
+    "@domains": "./src/domains",
+    "@frameworks": "./src/frameworks",
+    "@hooks": "./src/frameworks/web/hooks",
+    "@di": "./src/frameworks/web/di/index.ts"
+  }
+}

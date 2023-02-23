@@ -1,0 +1,29 @@
+image: node:16.18.1
+
+definitions:
+  services:
+    docker:
+      memory: 3072
+
+pipelines:
+  pull-requests:
+    "**":
+      - parallel:
+          - step:
+              name: Build and Test
+              caches:
+                - node
+              script:
+                - npm --prefix ./src/frameworks/web install
+                - yarn --frozen-lockfile
+                - TZ='Asia/Seoul' yarn test
+          - step:
+              name: Code linting
+              caches:
+                - node
+              script:
+                - npm --prefix ./src/frameworks/web install
+                - yarn --frozen-lockfile
+                - yarn lint:ci
+              after-script:
+                - pipe: atlassian/checkstyle-report:0.2.1
