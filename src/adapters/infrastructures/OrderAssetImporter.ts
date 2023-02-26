@@ -1,4 +1,4 @@
-import { IAssetImporter } from "@adapters/infrastructures/interfaces/iAssetStorage";
+import { IAssetImporter } from "@adapters/infrastructures/interfaces/iAssetImporter";
 import assetOrder from '@adapters/infrastructures/assets/order.json';
 
 class OrderAssetImporter implements IAssetImporter {
