@@ -4,7 +4,7 @@ interface IOrderProductDto {
   id: number;
   name: string;
   price: number;
-  imageUrls: string;
+  imageUrls: string[];
   color: string;
   band: string;
   cup: string;
@@ -16,7 +16,7 @@ export class OrderProductDto implements IOrderProductDto {
   readonly color: string;
   readonly cup: string;
   readonly id: number;
-  readonly imageUrls: string;
+  readonly imageUrls: string[];
   readonly name: string;
   readonly price: number;
   readonly quantity: number;
@@ -40,8 +40,10 @@ export class OrderProductDto implements IOrderProductDto {
     FitAiAssert.isTruthy(param.name, '상품명이 없습니다.');
     FitAiAssert.isTruthy(param.price, '상품 가격이 없습니다.');
     FitAiAssert.isTruthy(param.imageUrls, '상품 이미지가 없습니다.');
-    FitAiAssert.isTrue(param.imageUrls.startsWith('http://')
-      || param.imageUrls.startsWith('https://'), '상품 이미지 url을 확인하세요.');
+    for(let i=0; i<param.imageUrls.length; i++) {
+      FitAiAssert.isTrue(param.imageUrls[i].startsWith('http://')
+        || param.imageUrls[i].startsWith('https://'), '상품 이미지 url을 확인하세요.');
+    }
     FitAiAssert.isTruthy(param.color, '상품 색상이 없습니다.');
     FitAiAssert.isTruthy(param.band, '상품 밴드가 없습니다.');
     FitAiAssert.isTruthy(param.cup, '상품 컵이 없습니다.');

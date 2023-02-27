@@ -1,4 +1,6 @@
 import {makeAutoObservable} from "mobx";
+import di from '@di';
+import {OrderDto} from "@domains/dto/OrderDto";
 
 class OrderListVm {
   private _orderList: Array<OrderDto>;
@@ -12,7 +14,7 @@ class OrderListVm {
   }
 
   async getOrderList() {
-    di.orderList.getOrderList()
+     di.orderList.getOrderList()
       .then(list => {
         this._orderList = list;
       })
@@ -22,4 +24,4 @@ class OrderListVm {
   }
 }
 
-export const orderList = new OrderListVm();
+export const orderListVm = new OrderListVm();

@@ -10,7 +10,7 @@ const OrderProductList: React.FC<OrderProductListProps> = ({ orderProductItemLis
     <div>
       <div>{'[상품목록]'}</div>
       <br/>
-      {
+      { orderProductItemList &&
         orderProductItemList.map((item, index) => {
           const itemInfo: OrderProductItemInfo = {
             band: item.band,
@@ -22,6 +22,7 @@ const OrderProductList: React.FC<OrderProductListProps> = ({ orderProductItemLis
           };
           return(
             <OrderProductItem
+              key={index}
               name={itemInfo.name}
               band={itemInfo.band}
               color={itemInfo.color}

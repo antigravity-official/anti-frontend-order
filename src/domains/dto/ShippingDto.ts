@@ -7,6 +7,7 @@ interface IShippingDto {
   shippingFee: number;
   post: string;
   address: string;
+  message: string;
   orderProductList: Array<OrderProductDto>;
 }
 
@@ -18,6 +19,7 @@ export class ShippingDto implements IShippingDto {
   readonly shippingFee: number;
   readonly trackingNumber: string;
   readonly address: string;
+  readonly message: string;
 
   constructor(param: IShippingDto) {
     this.validateData(param);
@@ -25,6 +27,7 @@ export class ShippingDto implements IShippingDto {
     this.orderProductList = param.orderProductList;
     this.post = param.post;
     this.address = param.address;
+    this.message = param.message;
     this.shippingFee = param.shippingFee;
     this.trackingNumber = param.trackingNumber;
   }
@@ -36,6 +39,7 @@ export class ShippingDto implements IShippingDto {
     FitAiAssert.isTruthy(param.shippingFee, '배송료가 없습니다.');
     FitAiAssert.isTruthy(param.address, '도착 주소가 없습니다.');
     FitAiAssert.isTruthy(param.post, '출발 주소가 없습니다.');
+    FitAiAssert.isTruthy(param.message, '메시지가 없습니다.');
     FitAiAssert.isTruthy(param.orderProductList, '상품 목록이 없습니다.');
   }
 }

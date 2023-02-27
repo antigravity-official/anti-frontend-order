@@ -5,3 +5,5 @@ const LoadingScreen: React.FC = () => {
     <div>Loading...</div>
   );
 }
+
+export default LoadingScreen;

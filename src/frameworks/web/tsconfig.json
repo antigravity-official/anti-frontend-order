@@ -24,7 +24,9 @@
       "@di": [
         "./di/index.ts"
       ]
-    }
+    },
+    "resolveJsonModule": true,
+    "esModuleInterop": true
   },
   "exclude": [
     "node_modules",

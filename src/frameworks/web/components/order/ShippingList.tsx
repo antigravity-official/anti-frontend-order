@@ -9,8 +9,8 @@ const ShippingList: React.FC<ShippingListProps> = ({ shippingItemList }: Shippin
   // @ts-ignore
   return (
     <div>
-      {
-        shippingItemList.map((item, info) => {
+      { shippingItemList &&
+        shippingItemList.map((item, index) => {
           const itemInfo: ShippingItemInfo = {
             address: item.address,
             message: item.message,
@@ -22,6 +22,7 @@ const ShippingList: React.FC<ShippingListProps> = ({ shippingItemList }: Shippin
 
           return (
             <ShippingItem
+              key={index}
               address={itemInfo.address}
               message={itemInfo.message}
               post={itemInfo.message}

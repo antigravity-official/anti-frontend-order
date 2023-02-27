@@ -3,7 +3,7 @@ import OrderProductList from "@frameworks/web/components/order/OrderProductList"
 import {OrderProductItemInfo} from "@frameworks/web/components/order/OrderProductItem";
 
 export interface ShippingItemInfo {
-  trackingNumber: number;
+  trackingNumber: string;
   shippingFee: number;
   post: string;
   address: string;

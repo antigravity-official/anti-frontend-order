@@ -1,6 +1,6 @@
 import * as React from 'react';
-import * as ReactDOM from 'react-dom';
 import Index from './components/Index';
+import {createRoot} from "react-dom/client";
 
 const App = () => {
   return (
@@ -10,4 +10,6 @@ const App = () => {
   );
 };
 
-ReactDOM.render(<App />, document.getElementById('app'));
+const rootNode = document.getElementById('app');
+
+createRoot(rootNode).render(<App/>);
