@@ -19,7 +19,7 @@ const ShippingItem: React.FC<ShippingItemInfo> = ({trackingNumber, shippingFee, 
         orderProductItemList={ orderProductList }
       />
       <div>----------------------------</div>
-      <div>{'배송정보'}</div>
+      <div>{'[배송정보]'}</div>
       <div>{`송장번호: ${trackingNumber}`}</div>
       <div>{`배송료: ${shippingFee}원`}</div>
       <div>{`주소: [${post}] ${address}`}</div>

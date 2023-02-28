@@ -5,8 +5,18 @@ import {OrderDto} from "@domains/dto/OrderDto";
 class OrderListVm {
   private _orderList: Array<OrderDto>;
 
-  constructor() {
+  private constructor() {
+    this._orderList = Array<OrderDto>();
     makeAutoObservable(this);
+  }
+
+  private static instance: OrderListVm;
+
+  public static getInstance() {
+    if(!OrderListVm.instance) {
+      this.instance = new OrderListVm();
+    }
+    return OrderListVm.instance;
   }
 
   get orderList(): Array<OrderDto> {
@@ -24,4 +34,4 @@ class OrderListVm {
   }
 }
 
-export const orderListVm = new OrderListVm();
+export const orderListVm = OrderListVm.getInstance();
