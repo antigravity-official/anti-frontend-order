@@ -30,6 +30,6 @@ export class OrderDto implements IOrderDto {
     FitAiAssert.isTruthy(param.orderAt, '주문일이 없습니다.');
     FitAiAssert.isTruthy(param.amount, '총 주문결제금액이 없습니다.');
     FitAiAssert.isTruthy(param.shippingList, '배송정보 리스트가 없습니다.');
-
+    FitAiAssert.isTrue(param.shippingList.length > 0, '배송정보 리스트가 비어있습니다.');
   }
 }

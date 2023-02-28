@@ -41,5 +41,6 @@ export class ShippingDto implements IShippingDto {
     FitAiAssert.isTruthy(param.post, '출발 주소가 없습니다.');
     FitAiAssert.isTruthy(param.message, '메시지가 없습니다.');
     FitAiAssert.isTruthy(param.orderProductList, '상품 목록이 없습니다.');
+    FitAiAssert.isTrue(param.orderProductList.length > 0, '상품 목록이 비어있습니다.');
   }
 }
