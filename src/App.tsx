@@ -1,13 +1,13 @@
-import React, {useEffect, useState} from 'react';
-import logo from './logo.svg';
+import {useEffect, useState} from 'react';
 import './App.css';
 import {Order, OrderProduct} from "./Models";
 import assetOrder from './assets/order.json'
 
 function App() {
-    const [isLoading, setLoading] = useState(false);
-    const [orderInfo, setOrderInfo] = useState(Array.of(""));
+    const [isLoading, setLoading] = useState(false); /* 로딩중 유무 관리 */
+    const [orderInfo, setOrderInfo] = useState(Array.of("")); /* 주문 정보 state */
     useEffect(() => {
+        console.log(Array.of(""));
         showProgress();
         fetchMyOrder(json => {
             parseOrder(json, order => {
@@ -21,24 +21,25 @@ function App() {
     const hideProgress = () => setLoading(false);
     const updateOrderInfo = (info: string[]) => setOrderInfo(info);
 
-
+    /* JSON으로 부터 주문 정보를 불러옴 */
     const fetchMyOrder = (onCompleted: (json: object) => void) => {
+        /* promise를 반환하지 않고 callback 방식으로 비동기 처리 */
         setTimeout(() => {
             onCompleted(assetOrder)
-        }, 1000)
+        }, 1000) /* 1초 지연 */
     }
-
+    /* 불러온 주문 정보를 Order타입의 order객체로 반환함 */
     const parseOrder = (json: any, onCompleted: (order: Order) => void) => {
         setTimeout(() => {
             const order: Order = {
                 id: json.id,
-                orderAt: new Date(json.orderAt),
+                orderAt: new Date(json.orderAt), /* Date 형식으로 변환 */
                 amount: json.amount,
                 products: json.products,
                 shipping: json.shipping,
             }
             onCompleted(order)
-        }, 500)
+        }, 500) /* 0.5초 지연 */
     }
 
     const presentOrder = (order: Order) => {
