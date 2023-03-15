@@ -1,7 +1,5 @@
 import {useEffect, useState} from 'react';
-import './App.css';
-import {Order, OrderProduct} from "./Models";
-import assetOrder from './assets/order.json'
+import assetOrder from 'data/order.json'
 
 function App() {
     const [isLoading, setLoading] = useState(false); /* 로딩중 유무 관리 */
