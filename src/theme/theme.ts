@@ -16,6 +16,8 @@ const fontSize = {
 
 const colors = {
   textColor: '#212121',
+  borderColor: '#d6d6d6',
+  backgroundColor: '#f4f4f4',
   blackColors: {
     grey_900: '#212121',
     grey_800: '#424242',

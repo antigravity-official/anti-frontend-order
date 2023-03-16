@@ -1,7 +1,10 @@
 /* 주문 페이지 컴포넌트 */
 import { useState, useEffect } from 'react';
 import { orderDataJSON } from 'data/json';
-import { ProductCard } from 'components/order';
+import { ShippingCard } from 'components/order';
+
+import * as CommonStyle from 'styles/Common.style';
+import * as OrderStyle from 'styles/Index/Order.style';
 const Order = () => {
   const [isLoading, setLoading] = useState<boolean>(false); /* 로딩중 유무 관리 */
   const [orderData, setOrderData] = useState<Order | null>(
@@ -53,43 +56,27 @@ const Order = () => {
   }, []); /* dependency를 비워두는 것이 바람직 하진 않지만 , did mount 효과를 위해서. */
 
   return (
-    <div>
+    <>
       {isLoading && <div>Loading...</div>}
       {orderData && (
-        <>
-          <div>
-            <h4>[주문정보]</h4>
+        <OrderStyle.Wrapper>
+          <CommonStyle.PageTitle>주문 내역</CommonStyle.PageTitle>
+          <OrderStyle.OrderInfo>
+            <CommonStyle.SubTitle>주문 정보</CommonStyle.SubTitle>
             <p>주문 번호 : {orderData.id}</p>
             <p>주문 날짜 : {orderData.orderAt.toISOString().substring(0, 19).replace('T', ' ')}</p>
-            <p>총 결제 금액 : {orderData.amount}원</p>
-          </div>
-
-          <hr />
-          {orderData?.shippingList.map((shipping) => {
-            return (
-              <div key={shipping.id}>
-                <h4>[배송정보]</h4>
-                <p>송장번호 : {shipping.trackingNumber}</p>
-                <p>배송료 : {shipping.shippingFee}</p>
-                <p>
-                  주소지 : [{shipping.post}] {shipping.address}
-                </p>
-                <p>메세지 : {shipping.message}</p>
-                <hr />
-
-                <div>
-                  <h4>[상품 정보]</h4>
-                  {shipping?.productList.map((product: OrderProduct) => {
-                    return <ProductCard key={product.id} product={product} />;
-                  })}
-                </div>
-              </div>
-            );
-          })}
-          <div></div>
-        </>
+            <p>
+              총 결제 금액 : <strong>{orderData.amount}</strong>원
+            </p>
+          </OrderStyle.OrderInfo>
+          <OrderStyle.ShippingList>
+            {orderData?.shippingList.map((shipping) => {
+              return <ShippingCard shipping={shipping} />;
+            })}
+          </OrderStyle.ShippingList>
+        </OrderStyle.Wrapper>
       )}
-    </div>
+    </>
   );
 };
 

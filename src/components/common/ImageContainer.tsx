@@ -23,8 +23,8 @@ const ImageContainer = ({ imageUrl, sizeProps: { width, height } }: ImageProps) 
 
 const ImageWrapper = styled.div<ImageSizeProps>`
   overflow: hidden;
-  width: ${(props) => props.width};
-  height: ${(props) => props.height};
+  width: ${({width}) => width};
+  height: ${({height}) => height};
   img {
     width: 100%;
     height: 100%;

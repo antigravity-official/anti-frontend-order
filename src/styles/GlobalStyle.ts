@@ -7,6 +7,12 @@ export const GlobalStyle = createGlobalStyle`
          -webkit-font-smoothing: antialiased;
         font-family: 'Pretendard';
         display: block;
+          p {
+    margin-bottom: 8px;
+  }
+  strong{
+    font-weight:900;
+  }
     }   
     input [type='text']{
     -webkit-appearance: none; /* Safari input 그림자 제거 */
