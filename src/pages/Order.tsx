@@ -2,6 +2,8 @@
 import { useState, useEffect } from 'react';
 import { orderDataJSON } from 'data/json';
 import { ShippingCard } from 'components/order';
+import { Loading } from 'components/portal';
+
 
 import * as CommonStyle from 'styles/Common.style';
 import * as OrderStyle from 'styles/Index/Order.style';
@@ -57,8 +59,8 @@ const Order = () => {
 
   return (
     <>
-      {isLoading && <div>Loading...</div>}
-      {orderData && (
+      {isLoading && <Loading/>}
+      {!isLoading&& orderData && (
         <OrderStyle.Wrapper>
           <CommonStyle.PageTitle>주문 내역</CommonStyle.PageTitle>
           <OrderStyle.OrderInfo>
@@ -71,7 +73,7 @@ const Order = () => {
           </OrderStyle.OrderInfo>
           <OrderStyle.ShippingList>
             {orderData?.shippingList.map((shipping) => {
-              return <ShippingCard shipping={shipping} />;
+                return <ShippingCard key={shipping.id} shipping={shipping} />;
             })}
           </OrderStyle.ShippingList>
         </OrderStyle.Wrapper>

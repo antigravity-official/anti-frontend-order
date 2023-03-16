@@ -34,6 +34,10 @@ const CardWrapper = styled.li`
   &:last-child {
     border-bottom: none;
   }
+  @media (max-width: 550px) {
+    flex-direction: column;
+    align-items: start;
+  }
   strong {
     font-weight: 900;
   }
@@ -47,5 +51,9 @@ const ProductImageList = styled.div`
 
 const ProductInfo = styled.div`
   margin-left: 32px;
+  @media (max-width: 550px) {
+    margin-left:0;
+    margin-top: 32px;
+  }
 `;
 export default ProductItem;
