@@ -1,1 +1,1 @@
-export { default as orderData } from './order.json'; 
+export { default as orderDataJSON } from './order.json'; 

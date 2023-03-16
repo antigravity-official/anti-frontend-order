@@ -7,7 +7,7 @@ interface Order {
 }
 /* 배송 정보 */
 interface Shipping {
-  id: number;
+  id:number;
   trackingNumber: string /* 송장 번호 */;
   shippingFee: number /* 배송료 */;
   address: string /* 배송지 주소 */;
