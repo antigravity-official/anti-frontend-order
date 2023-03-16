@@ -47,12 +47,17 @@ const CardWrapper = styled.li`
 `;
 const ProductImageList = styled.div`
   display: flex;
+  width: 200px;
+  @media (max-width: 550px) {
+    width: 100%;
+    justify-content:center;
+  }
 `;
 
 const ProductInfo = styled.div`
   margin-left: 32px;
   @media (max-width: 550px) {
-    margin-left:0;
+    margin-left: 0;
     margin-top: 32px;
   }
 `;

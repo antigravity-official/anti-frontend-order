@@ -1,6 +1,6 @@
 /* 주문 페이지 컴포넌트 */
 import { useState, useEffect } from 'react';
-import { orderDataJSON } from 'data/json';
+import { orderDataJSON,orderData2JSON } from 'data/json';
 import { ShippingCard } from 'components/order';
 import { Loading } from 'components/portal';
 
@@ -20,7 +20,7 @@ const Order = () => {
   const fetchOrderData = (): Promise<any> => {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
-        resolve(orderDataJSON); /* import 해온 json 파일을 resolve 함. 성공의 경우만 다룸.*/
+        resolve(orderData2JSON); /* import 해온 json 파일을 resolve 함. 성공의 경우만 다룸.*/
       }, 1000); /* 데이터를 불러 오는데 1초가 걸린다고 가정*/
     });
   };
