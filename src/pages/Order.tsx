@@ -1,6 +1,7 @@
 /* 주문 페이지 컴포넌트 */
 import { useState, useEffect } from 'react';
 import { orderDataJSON } from 'data/json';
+import { ProductCard } from 'components/order';
 const Order = () => {
   const [isLoading, setLoading] = useState<boolean>(false); /* 로딩중 유무 관리 */
   const [orderData, setOrderData] = useState<Order | null>(
@@ -24,7 +25,7 @@ const Order = () => {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
         try {
-            /* json으로 또는 res.data로 받아온 값이 Order와 규격이 맞는지 확인한다.*/
+          /* json으로 또는 res.data로 받아온 값이 Order와 규격이 맞는지 확인한다.*/
           const _order: Order = {
             id: json?.id,
             orderAt: new Date(json?.orderAt) /* Date 형식으로 변환 */,
@@ -59,7 +60,7 @@ const Order = () => {
           <div>
             <h4>[주문정보]</h4>
             <p>주문 번호 : {orderData.id}</p>
-            <p>주문 날짜 : {orderData.orderAt.toISOString().substring(0, 19).replace('T',' ')}</p>
+            <p>주문 날짜 : {orderData.orderAt.toISOString().substring(0, 19).replace('T', ' ')}</p>
             <p>총 결제 금액 : {orderData.amount}원</p>
           </div>
 
@@ -75,20 +76,13 @@ const Order = () => {
                 </p>
                 <p>메세지 : {shipping.message}</p>
                 <hr />
-                {shipping?.productList.map((product) => {
-                  return (
-                    <div key={product.id}>
-                      <h4>[상품 정보]</h4>
-                      <p>상품명: {product.name}</p>
-                      <p>
-                        주문정보: {product.stock.color}/{product.stock.band}/{product.stock.cup}{' '}
-                        {product.stock.quantity}개
-                      </p>
-                      <p>가격: {product.price}</p>
-                      {/*이미지 넣기 */}
-                    </div>
-                  );
-                })}
+
+                <div>
+                  <h4>[상품 정보]</h4>
+                  {shipping?.productList.map((product: OrderProduct) => {
+                    return <ProductCard key={product.id} product={product} />;
+                  })}
+                </div>
               </div>
             );
           })}
