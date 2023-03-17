@@ -50,7 +50,7 @@ const ProductImageList = styled.div`
   width: 200px;
   @media (max-width: 550px) {
     width: 100%;
-    justify-content:center;
+    justify-content: center;
   }
 `;
 

@@ -8,7 +8,7 @@ interface ShippingCardProps {
 const ShippingCard = ({ shipping }: ShippingCardProps) => {
   return (
     <CardWrapper>
-          <CommonStyle.SubTitle>배송 정보</CommonStyle.SubTitle>
+      <CommonStyle.SubTitle>배송 정보</CommonStyle.SubTitle>
       <ShippingInfo>
         <p>송장 번호 : {shipping.trackingNumber}</p>
         <p>배송료 : {shipping.shippingFee}원</p>

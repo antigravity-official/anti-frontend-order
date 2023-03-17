@@ -12,8 +12,8 @@ const Loading = () => {
 
 const Background = styled.div`
   background-color: #00000085;
-  width: 480px;
-  @media (max-width: 1280px) {
+  width: 1280px;
+   @media (max-width: 1280px) {
     width: 100%;
   }
   height: 100vh;
