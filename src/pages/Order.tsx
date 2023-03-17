@@ -4,11 +4,6 @@ import { orderData2JSON } from 'data/json';
 import { Loading } from 'components/portal';
 import { OrderPageComponent } from 'components/order';
 
-interface NullOrTypeError{
-  value: string;
-  isNull: boolean;
-  type?: string;
-}
 const Order = () => {
   const [isLoading, setLoading] = useState<boolean>(false); /* 로딩중 유무 관리 */
   /* 주문 정보 데이터 저장 undefined 대신 null로 값이 비었음을 명시 */
@@ -22,8 +17,6 @@ const Order = () => {
   검증해야 할 객체의 depth가 깊어지면 성능 이슈가 없는지도 궁금합니다.
   typeGuard를 사용해야 한다면, 효과적으로 관리할 수 있는 방법이 어떤 것이 있는지도 궁금합니다.
   */
-
-
 
   /* 존재하지 않는 property에 대한 강한 검사는 일단 하지 않음 */
   const stockTypeGuard = (stock: unknown): void => {
@@ -138,10 +131,8 @@ const Order = () => {
       setOrderData(_parseOrderData);
       setErrorMessage(null);
     } catch (err) {
-      if (err instanceof Error) {
-        setErrorMessage('서버 응답값에 문제가 있습니다.');
-        console.log(err);
-      }
+      setErrorMessage('서버 응답값에 문제가 있습니다.');
+      console.log(err);
     } finally {
       hideProgress();
     }
