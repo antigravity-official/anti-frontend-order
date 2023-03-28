@@ -1,0 +1,197 @@
+openapi: 3.0.3
+info:
+  title: Swagger Petstore - OpenAPI 3.0
+  description: |-
+
+  termsOfService: http://swagger.io/terms/
+  contact:
+    email: apiteam@swagger.io
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  version: 1.0.11
+externalDocs:
+  description: Find out more about Swagger
+  url: http://swagger.io
+servers:
+  - url: http://localhost/api
+paths:
+  /order/{orderId}:
+    get:
+      summary: Find order by id
+      description: 주문정보와 배송정보를 리턴
+      operationId: getOrderbyId
+      parameters:
+        - name: orderId
+          in: path
+          description: ID of pet to return
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Order"
+        "400":
+          description: Invalid ID supplied
+        "404":
+          description: Order not found
+
+  /ship/{shipId}:
+    get:
+      summary: Find ship by id
+      description: 배송정보와 상품정보를 리턴
+      operationId: getShipById
+      parameters:
+        - name: shipId
+          in: path
+          description: ID of pet to return
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ResShip"
+        "400":
+          description: Invalid ID supplied
+        "404":
+          description: Ship not found
+
+components:
+  schemas:
+    Order:
+      type: object
+      required: [id, orderAt,amount,ships]
+      properties:
+        id:
+          type: integer
+          format: int64
+          example: 10
+        orderAt:
+          type: string
+          format: date-time
+          example: 2023-01-01 12:13:14
+        amount:
+          type: integer
+          format: int64
+          example: 77700
+        ships:
+          type: array
+          xml:
+            name: ship
+            wrapped: true
+          items:
+            $ref: "#/components/schemas/Ship"
+      xml:
+        name: order
+
+    Ship:
+      type: object
+      required: [id, trackingNumber, shippingFee, address, post, message]
+      properties:
+        id:
+          type: integer
+          format: int64
+          example: 8
+          required: true
+        trackingNumber:
+          type: string
+          example: T08912739410
+        shippingFee:
+          type: integer
+          format: int64
+          example: 3000
+        address:
+          type: string
+          example: 서울시 강남구 논현로 650-1
+        post:
+          type: string
+          example: 06106
+        message:
+          type: string
+          example: 안전한 배송 부탁드립니다.
+
+    Product:
+      type: object
+      required: [id, name,price,imageUrls,stock]
+      properties:
+        id:
+          type: integer
+          format: int64
+          example: 8
+        name:
+          type: string
+          example: 소울 라이트
+        price:
+          type: integer
+          format: int64
+          example: 3000
+        imageUrls:
+          type: array
+          xml:
+            wrapped: true
+          items:
+            type: string
+            xml:
+              name: photoUrl
+        stock:
+          $ref: "#/components/schemas/Stock"
+
+    Stock:
+      type: object
+      required: [color, band,cup,quantity]
+      properties:
+        color:
+          type: string
+          example: SKIN
+        band:
+          type: string
+          example: SKIN
+        cup:
+          type: string
+          example: SKIN
+        quantity:
+          type: integer
+          format: int64
+          example: 1
+    ResOrder:
+      type: object
+      required: [orderId, products]
+      properties:
+        orderId:
+          type: integer
+          format: int64
+          example: 1
+        ships:
+          type: array
+          xml:
+            name: ships
+            wrapped: true
+          items:
+            $ref: "#/components/schemas/Ship"
+
+
+    ResShip:
+      type: object
+      required: [shipId, products]
+      properties:
+        shipId:
+          type: integer
+          format: int64
+          example: 1
+        products:
+          type: array
+          xml:
+            name: products
+            wrapped: true
+          items:
+            $ref: "#/components/schemas/Product"
