@@ -1,9 +1,11 @@
-import { useCallback } from "react";
-import { Order, OrderProduct } from "./Models";
-import "./App.css";
+import { Order } from "./Models";
 import { delay } from "./utils";
+import "./App.css";
 import { fetchMyOrder } from "./api/v1/order";
 import useFetchApi from "./hooks/useFetchApi";
+import OrderInfo from "./components/order/OrderInfo";
+import ShippingInfo from "./components/order/ShippingInfo";
+import ProductItem from "./components/order/ProductItem";
 
 /**
  * 1. api fetcher 분리
@@ -18,14 +20,17 @@ import useFetchApi from "./hooks/useFetchApi";
 const parseOrder = async (json: Record<string, any>): Promise<Order> => {
   // parse order
   // response data 를 parse 합니다
-  //
+  // 향후 json 변경시, 이 부분에서 변경한다.
   await delay(500);
+  const shippings = [json.shipping].map((ship) => {
+    ship.products = json.products;
+    return ship;
+  });
   const order: Order = {
     id: json.id,
     orderAt: new Date(json.orderAt),
     amount: json.amount,
-    products: json.products,
-    shipping: json.shipping,
+    shippings,
   };
   return order;
 };
@@ -42,55 +47,45 @@ function App() {
       id: -1,
       orderAt: new Date(),
       amount: 0,
-      products: [],
-      shipping: {
-        id: -1,
-        trackingNumber: "-1",
-        shippingFee: 0,
-        address: "",
-        post: "",
-        message: "",
-      },
+      shippings: [
+        {
+          id: -1,
+          trackingNumber: "-1",
+          shippingFee: 0,
+          address: "",
+          post: "",
+          message: "",
+          products: [],
+        },
+      ],
     },
     fetchFn: fetchFn,
   });
-
-  const presentOrder = useCallback((order: Order) => {
-    let output: string[] = [];
-    const println = (text: string) => output.push(text);
-    //
-    println(`주문번: ${order.id}`);
-    println(`주문일: ${order.orderAt}`);
-    println(`총 결제금액: ${order.amount}원`);
-    println(``);
-    println(`----------------------------`);
-    println(`[상품목록]`);
-    println(``);
-    order.products.forEach((p: OrderProduct) => {
-      println(`상품명: ${p.name}`);
-      println(`가격: ${p.price}원`);
-      println(
-        `주문정보: ${p.stock.color}/${p.stock.band}/${p.stock.cup} ${p.stock.quantity}개`
-      );
-      println(``);
-    });
-    println(`----------------------------`);
-    println(`[배송정보]`);
-    println(`송장번호: ${order.shipping.trackingNumber}`);
-    println(`배송료: ${order.shipping.shippingFee}원`);
-    println(`주소: [${order.shipping.post}] ${order.shipping.address}`);
-    println(`메시지: ${order.shipping.message}`);
-    return output;
-  }, []);
   return (
     <div>
       <button type="button" onClick={refetch}>
         refetch
       </button>
       {isLoading && <div>Loading...</div>}
-      {presentOrder(data).map((line, idx) => (
-        <div key={idx}>{line}</div>
-      ))}
+      <OrderInfo id={data.id} amount={data.amount} orderAt={data.orderAt} />
+      <ul>
+        {data.shippings.map(({ products, ...shipping }, index) => {
+          return (
+            <li key={`Shipping__${shipping.id}__${index}`}>
+              <ShippingInfo {...shipping} />
+              <ul>
+                {products.map((product, idx) => {
+                  return (
+                    <li key={`ProductItem__${product.id}__${idx}`}>
+                      <ProductItem {...product} />
+                    </li>
+                  );
+                })}
+              </ul>
+            </li>
+          );
+        })}
+      </ul>
     </div>
   );
 }
