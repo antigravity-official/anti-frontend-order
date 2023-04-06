@@ -1,34 +1,59 @@
-import { useCallback, useEffect, useState } from "react";
+import { useCallback } from "react";
 import { Order, OrderProduct } from "./Models";
 import "./App.css";
-import assetOrder from "./assets/order.json";
+import { delay } from "./utils";
+import { fetchMyOrder } from "./api/v1/order";
+import useFetchApi from "./hooks/useFetchApi";
+
+/**
+ * 1. api fetcher 분리
+ *  - fetchMyOrder callback > callback (callback hell 가능성 있는 구간에 대하여) Promise 로 처리 하기
+ *  - useFetchApi custom hook 생성
+ *
+ * 2. parse 함수
+ * 3. component 분리
+ *
+ */
+
+const parseOrder = async (json: Record<string, any>): Promise<Order> => {
+  // parse order
+  // response data 를 parse 합니다
+  //
+  await delay(500);
+  const order: Order = {
+    id: json.id,
+    orderAt: new Date(json.orderAt),
+    amount: json.amount,
+    products: json.products,
+    shipping: json.shipping,
+  };
+  return order;
+};
+
+const fetchFn = async () => {
+  const json = await fetchMyOrder();
+  const order = await parseOrder(json);
+  return order;
+};
 
 function App() {
-  const [isLoading, setLoading] = useState(false);
-  const [orderInfo, setOrderInfo] = useState(Array.of(""));
-
-  const showProgress = () => setLoading(true);
-  const hideProgress = () => setLoading(false);
-  const updateOrderInfo = (info: string[]) => setOrderInfo(info);
-
-  const fetchMyOrder = (onCompleted: (json: object) => void) => {
-    setTimeout(() => {
-      onCompleted(assetOrder);
-    }, 1000);
-  };
-
-  const parseOrder = (json: any, onCompleted: (order: Order) => void) => {
-    setTimeout(() => {
-      const order: Order = {
-        id: json.id,
-        orderAt: new Date(json.orderAt),
-        amount: json.amount,
-        products: json.products,
-        shipping: json.shipping,
-      };
-      onCompleted(order);
-    }, 500);
-  };
+  const { isLoading, data, refetch } = useFetchApi({
+    initailData: {
+      id: -1,
+      orderAt: new Date(),
+      amount: 0,
+      products: [],
+      shipping: {
+        id: -1,
+        trackingNumber: "-1",
+        shippingFee: 0,
+        address: "",
+        post: "",
+        message: "",
+      },
+    },
+    fetchFn: fetchFn,
+  });
 
   const presentOrder = useCallback((order: Order) => {
     let output: string[] = [];
@@ -55,22 +80,15 @@ function App() {
     println(`배송료: ${order.shipping.shippingFee}원`);
     println(`주소: [${order.shipping.post}] ${order.shipping.address}`);
     println(`메시지: ${order.shipping.message}`);
-
-    updateOrderInfo(output);
+    return output;
   }, []);
-  useEffect(() => {
-    showProgress();
-    fetchMyOrder((json) => {
-      parseOrder(json, (order) => {
-        hideProgress();
-        presentOrder(order);
-      });
-    });
-  }, [presentOrder]);
   return (
     <div>
+      <button type="button" onClick={refetch}>
+        refetch
+      </button>
       {isLoading && <div>Loading...</div>}
-      {orderInfo.map((line, idx) => (
+      {presentOrder(data).map((line, idx) => (
         <div key={idx}>{line}</div>
       ))}
     </div>
