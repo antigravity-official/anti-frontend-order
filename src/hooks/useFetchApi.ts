@@ -25,7 +25,7 @@ export default function useFetchApi<T>({
       const responseData = await fetchFn(controllerRef.current.signal);
       setData(responseData);
     } catch (error) {
-      console.log("error");
+      console.log("error", error);
       setError(error);
     } finally {
       setLoading(false);
