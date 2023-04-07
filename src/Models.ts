@@ -1,3 +1,11 @@
+export interface OrderResponseData {
+  id: number;
+  orderAt: string;
+  amount: number;
+  products: OrderProduct[];
+  shipping: Shipping;
+}
+
 export interface Order extends OrderInfo {
   shippings: (Shipping & {
     products: OrderProduct[];
