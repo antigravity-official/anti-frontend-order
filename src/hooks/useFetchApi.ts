@@ -46,7 +46,7 @@ export default function useFetchApi<T>({
 
   const refetch = useCallback(() => {
     controllerRef.current.abort();
-    fetchData();
+    return fetchData();
   }, [fetchData]);
 
   return { isLoading, error, data, refetch };
