@@ -1,9 +1,9 @@
 export interface Order {
-  id: number;
-  orderAt: Date;
-  amount: number;
-  products: OrderProduct[];
-  shipping: Shipping;
+  id: number
+  orderAt: Date
+  amount: number
+  products: OrderProduct[]
+  shipping: Shipping
 }
 
 export interface OrderProduct {
@@ -22,10 +22,10 @@ export interface Stock {
 }
 
 export interface Shipping {
-  id: number,
-  trackingNumber: string,
-  shippingFee: number,
-  address: string,
-  post: string,
+  id: number
+  trackingNumber: string
+  shippingFee: number
+  address: string
+  post: string
   message: string
 }
