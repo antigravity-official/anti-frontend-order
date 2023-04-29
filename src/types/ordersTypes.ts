@@ -6,6 +6,12 @@ export interface Order {
   shipping: Shipping
 }
 
+export interface OrderInfo {
+  id: number
+  orderAt: Date
+  amount: number
+}
+
 export interface OrderProduct {
   id: number
   name: string
