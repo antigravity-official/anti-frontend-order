@@ -1,4 +1,4 @@
-import { Shipping as ShippingTypes } from '../types/ordersTypes'
+import { Shipping as ShippingTypes } from '../../types/ordersTypes'
 
 interface ShippingProps {
   shippingData: ShippingTypes
@@ -7,7 +7,6 @@ interface ShippingProps {
 const Shipping = ({ shippingData }: ShippingProps) => {
   return (
     <>
-      <p>[배송정보]</p>
       <p>송장번호: {shippingData.trackingNumber}</p>
       <p>배송료: {shippingData.shippingFee}원</p>
       <p>

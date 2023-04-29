@@ -1,6 +1,6 @@
 import { Fragment } from 'react'
 
-import { OrderProduct as OrderProductTypes } from '../types/ordersTypes'
+import { OrderProduct as OrderProductTypes } from '../../types/ordersTypes'
 
 interface OrderInfoProps {
   orderProductData: OrderProductTypes[]
@@ -9,7 +9,6 @@ interface OrderInfoProps {
 const OrderProduct = ({ orderProductData }: OrderInfoProps) => {
   return (
     <>
-      <p>[상품목록]</p>
       {orderProductData.map((orderProduct, index) => {
         const orderProductKey = `orderProduct-${index}`
 

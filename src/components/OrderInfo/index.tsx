@@ -1,4 +1,4 @@
-import { OrderInfo as OrderInfoTypes } from '../types/ordersTypes'
+import { OrderInfo as OrderInfoTypes } from '../../types/ordersTypes'
 
 interface OrderInfoProps {
   orderInfoData: OrderInfoTypes
