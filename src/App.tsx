@@ -1,45 +1,14 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import useGetOrdersQuery from './hooks/useGetOrdersQuery'
 
 import { Order, OrderProduct } from './types/Models'
-import assetOrder from './assets/order.json'
 
 const App = () => {
   const { isLoading, data: ordersData } = useGetOrdersQuery()
-  //  const [isLoading, setLoading] = useState(false)
   const [orderInfo, setOrderInfo] = useState(Array.of(''))
 
-  useEffect(() => {
-    // showProgress()
-    fetchMyOrder((json) => {
-      parseOrder(json, (order) => {
-        // hideProgress()
-        presentOrder(order)
-      })
-    })
-  }, [])
-
-  // const showProgress = () => setLoading(true)
-  // const hideProgress = () => setLoading(false)
-  const updateOrderInfo = (info: string[]) => setOrderInfo(info)
-
-  const fetchMyOrder = (onCompleted: (json: object) => void) => {
-    setTimeout(() => {
-      onCompleted(assetOrder)
-    }, 1000)
-  }
-
-  const parseOrder = (json: any, onCompleted: (order: Order) => void) => {
-    setTimeout(() => {
-      const order: Order = {
-        id: json.id,
-        orderAt: new Date(json.orderAt),
-        amount: json.amount,
-        products: json.products,
-        shipping: json.shipping,
-      }
-      onCompleted(order)
-    }, 500)
+  if (isLoading || !ordersData) {
+    return <div>Loading...</div>
   }
 
   const presentOrder = (order: Order) => {
@@ -66,12 +35,11 @@ const App = () => {
     println(`주소: [${order.shipping.post}] ${order.shipping.address}`)
     println(`메시지: ${order.shipping.message}`)
 
-    updateOrderInfo(output)
+    // updateOrderInfo(output)
   }
 
   return (
     <div>
-      {isLoading && <div>Loading...</div>}
       {orderInfo.map((line, infoIndex) => {
         const infoKey = `info-${infoIndex}`
         return <div key={infoKey}>{line}</div>
