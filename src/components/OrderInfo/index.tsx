@@ -1,15 +1,17 @@
-import { OrderInfo as OrderInfoTypes } from '../../types/ordersTypes'
+import { OrderInfo as OrderInfoTypes } from 'types/ordersTypes'
 
 interface OrderInfoProps {
   orderInfoData: OrderInfoTypes
 }
 
 const OrderInfo = ({ orderInfoData }: OrderInfoProps) => {
+  const { id, orderAt, amount } = orderInfoData
+
   return (
     <>
-      <p>주문번: {orderInfoData.id}</p>
-      {/* <p>주문일: {orderInfo.orderAt}</p> */}
-      <p>총 결제금액: ${orderInfoData.amount}원</p>
+      <p>주문번: {id}</p>
+      {/* <p>주문일: {orderAt}</p> */}
+      <p>총 결제금액: ${amount}원</p>
     </>
   )
 }
