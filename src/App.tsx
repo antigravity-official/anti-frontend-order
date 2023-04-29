@@ -1,10 +1,9 @@
-import { Fragment } from 'react'
-
 import useGetOrdersQuery from './hooks/useGetOrdersQuery'
 import { OrderProduct as OrderProductTypes, Shipping as ShippingTypes } from './types/ordersTypes'
 import OrderInfo from './components/OrderInfo'
 import OrderProduct from './components/OrderProduct'
 import Shipping from './components/Shipping'
+import OrderBundle from './components/OrderBundle'
 
 const App = () => {
   const { isLoading, data: ordersData } = useGetOrdersQuery()
@@ -19,7 +18,7 @@ const App = () => {
     amount: ordersData.amount,
   }
 
-  const shippingOrderProducData: { shipping: ShippingTypes; products: OrderProductTypes[] }[] = [
+  const orderBundleData: { shipping: ShippingTypes; products: OrderProductTypes[] }[] = [
     {
       shipping: ordersData.shipping,
       products: ordersData.products,
@@ -29,16 +28,16 @@ const App = () => {
   return (
     <>
       <OrderInfo orderInfoData={orderInfoData} />
-      {shippingOrderProducData.map((data, index) => {
-        const dataKey = `data-${index}`
-        const shippingData = data.shipping
-        const orderProductData = data.products
+      {orderBundleData.map((orderBundle, index) => {
+        const orderBundleKey = `orderBundle-${index}`
+        const shippingData = orderBundle.shipping
+        const orderProductData = orderBundle.products
 
         return (
-          <Fragment key={dataKey}>
+          <OrderBundle key={orderBundleKey}>
             <Shipping shippingData={shippingData} />
             <OrderProduct orderProductData={orderProductData} />
-          </Fragment>
+          </OrderBundle>
         )
       })}
     </>
