@@ -1,9 +1,9 @@
 import useGetOrdersQuery from './hooks/useGetOrdersQuery'
 import { OrderProduct as OrderProductTypes, Shipping as ShippingTypes } from './types/ordersTypes'
 import OrderInfo from './components/OrderInfo'
-import OrderProduct from './components/OrderProduct'
 import Shipping from './components/Shipping'
 import OrderBundle from './components/OrderBundle'
+import OrderProducts from './components/OtherProducts'
 
 const App = () => {
   const { isLoading, data: ordersData } = useGetOrdersQuery()
@@ -31,12 +31,12 @@ const App = () => {
       {orderBundleData.map((orderBundle, index) => {
         const orderBundleKey = `orderBundle-${index}`
         const shippingData = orderBundle.shipping
-        const orderProductData = orderBundle.products
+        const orderProductDatas = orderBundle.products
 
         return (
           <OrderBundle key={orderBundleKey}>
             <Shipping shippingData={shippingData} />
-            <OrderProduct orderProductData={orderProductData} />
+            <OrderProducts orderProductDatas={orderProductDatas} />
           </OrderBundle>
         )
       })}

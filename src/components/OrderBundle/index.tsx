@@ -4,14 +4,14 @@ interface OrderBunldeProps {
 
 const OrderBundle = ({ children }: OrderBunldeProps) => {
   const shippingComponent = children.filter((item) => item.props.shippingData)
-  const orderProductComponent = children.filter((item) => item.props.orderProductData)
+  const orderProductsComponent = children.filter((item) => item.props.orderProductDatas)
 
   return (
     <>
       <p>[배송정보]</p>
       {shippingComponent}
       <p>[상품목록]</p>
-      {orderProductComponent}
+      {orderProductsComponent}
     </>
   )
 }
