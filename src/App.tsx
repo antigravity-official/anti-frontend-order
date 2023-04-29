@@ -1,24 +1,26 @@
 import React, { useEffect, useState } from 'react'
-import logo from './logo.svg'
-import './App.css'
-import { Order, OrderProduct } from './Models'
+import useGetOrdersQuery from './hooks/useGetOrdersQuery'
+
+import { Order, OrderProduct } from './types/Models'
 import assetOrder from './assets/order.json'
 
 const App = () => {
-  const [isLoading, setLoading] = useState(false)
+  const { isLoading, data: ordersData } = useGetOrdersQuery()
+  //  const [isLoading, setLoading] = useState(false)
   const [orderInfo, setOrderInfo] = useState(Array.of(''))
+
   useEffect(() => {
-    showProgress()
+    // showProgress()
     fetchMyOrder((json) => {
       parseOrder(json, (order) => {
-        hideProgress()
+        // hideProgress()
         presentOrder(order)
       })
     })
   }, [])
 
-  const showProgress = () => setLoading(true)
-  const hideProgress = () => setLoading(false)
+  // const showProgress = () => setLoading(true)
+  // const hideProgress = () => setLoading(false)
   const updateOrderInfo = (info: string[]) => setOrderInfo(info)
 
   const fetchMyOrder = (onCompleted: (json: object) => void) => {
