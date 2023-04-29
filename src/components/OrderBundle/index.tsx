@@ -1,3 +1,5 @@
+import styles from './orderBundle.module.scss'
+
 interface OrderBunldeProps {
   children: JSX.Element[]
 }
@@ -7,12 +9,10 @@ const OrderBundle = ({ children }: OrderBunldeProps) => {
   const orderProductsComponent = children.filter((item) => item.props.orderProductDatas)
 
   return (
-    <>
-      <p>[배송정보]</p>
+    <li className={styles.orderBundleBox}>
       {shippingComponent}
-      <p>[상품목록]</p>
       {orderProductsComponent}
-    </>
+    </li>
   )
 }
 

@@ -1,0 +1,8 @@
+@use '../../styles/constants/colors';
+
+.orderBundleBox {
+  display: flex;
+  padding: 10px 0;
+  margin: 10px 0;
+  border-bottom: 1px dotted colors.$DARK_GRAY;
+}

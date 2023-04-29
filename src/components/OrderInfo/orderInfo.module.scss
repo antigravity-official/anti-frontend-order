@@ -1,0 +1,6 @@
+@use '../../styles/constants/colors';
+
+.orderInfoBox {
+  padding: 10px 0;
+  border-bottom: 1px dotted colors.$DARK_GRAY;
+}

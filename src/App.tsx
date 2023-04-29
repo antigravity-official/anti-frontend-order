@@ -19,18 +19,20 @@ const App = () => {
   return (
     <>
       <OrderInfo orderInfoData={orderInfoData} />
-      {orderBundleData.map((orderBundle, index) => {
-        const orderBundleKey = `orderBundle-${index}`
-        const shippingData = orderBundle.shipping
-        const orderProductDatas = orderBundle.products
+      <ul>
+        {orderBundleData.map((orderBundle, index) => {
+          const orderBundleKey = `orderBundle-${index}`
+          const shippingData = orderBundle.shipping
+          const orderProductDatas = orderBundle.products
 
-        return (
-          <OrderBundle key={orderBundleKey}>
-            <Shipping shippingData={shippingData} />
-            <OrderProducts orderProductDatas={orderProductDatas} />
-          </OrderBundle>
-        )
-      })}
+          return (
+            <OrderBundle key={orderBundleKey}>
+              <Shipping shippingData={shippingData} />
+              <OrderProducts orderProductDatas={orderProductDatas} />
+            </OrderBundle>
+          )
+        })}
+      </ul>
     </>
   )
 }
