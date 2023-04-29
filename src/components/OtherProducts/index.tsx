@@ -1,5 +1,5 @@
 import { OrderProduct as OrderProductTypes } from 'types/ordersTypes'
-import OrderProduct from '../OrderProduct'
+import OrderProduct from './OrderProduct'
 
 interface OrderInfoProps {
   orderProductDatas: OrderProductTypes[]

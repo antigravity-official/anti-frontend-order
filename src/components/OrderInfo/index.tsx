@@ -10,7 +10,7 @@ const OrderInfo = ({ orderInfoData }: OrderInfoProps) => {
   return (
     <>
       <p>주문번: {id}</p>
-      {/* <p>주문일: {orderAt}</p> */}
+      <p>주문일: {orderAt.toString()}</p>
       <p>총 결제금액: ${amount}원</p>
     </>
   )
