@@ -1,5 +1,6 @@
 import useGetOrdersQuery from './hooks/useGetOrdersQuery'
-import { OrderProduct as OrderProductTypes, Shipping as ShippingTypes } from './types/ordersTypes'
+import getOrderInfoData from 'utils/getOrderInfoData'
+import getOrderBundleData from 'utils/getOrderBundleData'
 import OrderInfo from './components/OrderInfo'
 import Shipping from './components/Shipping'
 import OrderBundle from './components/OrderBundle'
@@ -12,18 +13,8 @@ const App = () => {
     return <div>Loading...</div>
   }
 
-  const orderInfoData = {
-    id: ordersData.id,
-    orderAt: new Date(ordersData.orderAt),
-    amount: ordersData.amount,
-  }
-
-  const orderBundleData: { shipping: ShippingTypes; products: OrderProductTypes[] }[] = [
-    {
-      shipping: ordersData.shipping,
-      products: ordersData.products,
-    },
-  ]
+  const orderInfoData = getOrderInfoData(ordersData)
+  const orderBundleData = getOrderBundleData(ordersData)
 
   return (
     <>

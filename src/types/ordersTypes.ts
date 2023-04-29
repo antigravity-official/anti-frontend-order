@@ -1,6 +1,6 @@
 export interface Order {
   id: number
-  orderAt: Date
+  orderAt: string
   amount: number
   products: OrderProduct[]
   shipping: Shipping
