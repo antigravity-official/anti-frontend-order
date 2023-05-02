@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 import { IShipping } from "../../Models";
-import OrderProduct from "./OrderProduct";
 import Wrapper from "../Common/Wrapper";
+import { ReactNode } from "react";
 
 interface ISHIPPING {
   [key: string]: string;
@@ -15,26 +15,25 @@ const SHIPPING: ISHIPPING = {
   message: "메시지",
 };
 
-export default function Shipping(prop: IShipping) {
-  console.log(prop.products);
+interface IShippingProps {
+  children: ReactNode;
+  shipping: IShipping;
+}
+
+export default function Shipping({ shipping, children }: IShippingProps) {
+  console.log(shipping.products);
   return (
     <Wrapper>
-      {Object.keys(prop).map((k) => {
+      {Object.keys(shipping).map((k) => {
         return (
           SHIPPING[k] && (
-            <ShippingInfo key={prop[k]}>
-              {`${SHIPPING[k]}: ${prop[k]}`}
+            <ShippingInfo key={shipping[k]}>
+              {`${SHIPPING[k]}: ${shipping[k]}`}
             </ShippingInfo>
           )
         );
       })}
-      <ShippingInfo>
-        상품목록 :{" "}
-        {prop.products &&
-          prop.products.map((v) => (
-            <OrderProduct key={prop.id + v.id + v.name} {...v} />
-          ))}
-      </ShippingInfo>
+      <ShippingInfo>상품목록 :{children}</ShippingInfo>
     </Wrapper>
   );
 }

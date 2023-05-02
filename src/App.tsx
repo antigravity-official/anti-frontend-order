@@ -3,6 +3,9 @@ import "./App.css";
 import { IOrder } from "./Models";
 import Order from "./components/Order/Order";
 import { fetchMyOrder } from "./api/orderApi";
+import Wrapper from "./components/Common/Wrapper";
+import Shipping from "./components/Order/Shipping";
+import OrderProduct from "./components/Order/OrderProduct";
 
 function App() {
   const [isLoading, setLoading] = useState(false);
@@ -22,7 +25,21 @@ function App() {
 
   return (
     <div>
-      {isLoading || !order ? <div>Loading...</div> : <Order {...order} />}
+      {isLoading || !order ? (
+        <div>Loading...</div>
+      ) : (
+        <Wrapper>
+          <Order order={order} />
+          {order.shipping.map((v) => (
+            <Shipping key={order.id + v.id} shipping={v}>
+              {v.products &&
+                v.products.map((p) => (
+                  <OrderProduct key={order.id + v.id + p.id} product={p} />
+                ))}
+            </Shipping>
+          ))}
+        </Wrapper>
+      )}
     </div>
   );
 }

@@ -1,6 +1,5 @@
 import styled from "@emotion/styled";
 import { IOrder } from "../../Models";
-import Shipping from "./Shipping";
 import Wrapper from "../Common/Wrapper";
 
 interface IORDER {
@@ -12,22 +11,20 @@ const ORDER: IORDER = {
   amount: "총 결제금액",
 };
 
-const Order = (prop: IOrder) => {
+interface IOrderProps {
+  order: IOrder;
+}
+
+const Order = ({ order }: IOrderProps) => {
   return (
     <Wrapper>
-      {Object.keys(prop).map((k) => {
+      {Object.keys(order).map((k) => {
         return (
-          ORDER[k] &&
-          prop[k] && (
-            <OrderInfo key={prop[k]}>{`${ORDER[k]}: ${prop[k]}`}</OrderInfo>
+          ORDER[k] && (
+            <OrderInfo key={order[k]}>{`${ORDER[k]}: ${order[k]}`}</OrderInfo>
           )
         );
       })}
-      <OrderInfo>
-        {prop.shipping.map((v) => (
-          <Shipping key={v.id} {...v} />
-        ))}
-      </OrderInfo>
     </Wrapper>
   );
 };
