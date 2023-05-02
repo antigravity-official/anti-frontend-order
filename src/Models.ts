@@ -1,31 +1,32 @@
-export interface Order {
+export interface IOrder {
   id: number;
   orderAt: Date;
   amount: number;
-  products: OrderProduct[];
-  shipping: Shipping;
+  shipping: IShipping;
 }
 
-export interface OrderProduct {
-  id: number
-  name: string
-  price: number
-  imageUrls: string[]
-  stock: Stock
+export interface IOrderProduct {
+  [idx: string]: any;
+  id: number;
+  name: string;
+  price: number;
+  imageUrls: string[];
+  stock: IStock;
 }
 
-export interface Stock {
-  color: string
-  band: string
-  cup: string
-  quantity: number
+export interface IStock {
+  color: string;
+  band: string;
+  cup: string;
+  quantity: number;
 }
 
-export interface Shipping {
-  id: number,
-  trackingNumber: string,
-  shippingFee: number,
-  address: string,
-  post: string,
-  message: string
+export interface IShipping {
+  id: number;
+  trackingNumber: string;
+  shippingFee: number;
+  address: string;
+  post: string;
+  message: string;
+  products: IOrderProduct[];
 }
