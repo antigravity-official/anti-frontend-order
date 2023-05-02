@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 import { IOrder } from "../../Models";
 import Shipping from "./Shipping";
-import Wrapper from "../Wrapper";
+import Wrapper from "../Common/Wrapper";
 
 interface IORDER {
   [key: string]: string;

@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 import { IShipping } from "../../Models";
 import OrderProduct from "./OrderProduct";
-import Wrapper from "../Wrapper";
+import Wrapper from "../Common/Wrapper";
 
 interface ISHIPPING {
   [key: string]: string;

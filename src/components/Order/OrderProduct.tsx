@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 import { IOrderProduct } from "../../Models";
-import Wrapper from "../Wrapper";
+import Wrapper from "../Common/Wrapper";
 
 interface IORDER_PRODUCT {
   [key: string]: string;
