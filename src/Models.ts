@@ -1,8 +1,9 @@
 export interface IOrder {
+  [idx: string]: any;
   id: number;
   orderAt: Date;
   amount: number;
-  shipping: IShipping;
+  shipping: IShipping[];
 }
 
 export interface IOrderProduct {
@@ -22,6 +23,7 @@ export interface IStock {
 }
 
 export interface IShipping {
+  [idx: string]: any;
   id: number;
   trackingNumber: string;
   shippingFee: number;
