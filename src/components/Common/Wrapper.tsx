@@ -7,7 +7,6 @@ interface IWrapperProp
     HTMLDivElement
   > {
   children: ReactNode;
-  props?: any;
 }
 
 export default function Wrapper({ children, ...rest }: IWrapperProp) {
