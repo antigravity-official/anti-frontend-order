@@ -10,7 +10,7 @@ const ORDER_PRODUCT: IORDER_PRODUCT = {
   price: "가격",
 };
 
-export default function OrderProduct<T extends IOrderProduct>(prop: T) {
+export default function OrderProduct(prop: IOrderProduct) {
   const stock = prop.stock;
   return (
     <Wrapper>
