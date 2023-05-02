@@ -1,6 +1,7 @@
 import styled from "@emotion/styled";
 import { IOrder } from "../../Models";
 import Shipping from "./Shipping";
+import Wrapper from "../Wrapper";
 
 interface IORDER {
   [key: string]: string;
@@ -33,13 +34,6 @@ const Order = (prop: IOrder) => {
 
 export default Order;
 
-const Wrapper = styled.div`
-  margin: 12px;
-  border-radius: 8px;
-  border: 1px solid black;
-  display: flex;
-  flex-direction: column;
-`;
 const OrderInfo = styled.div`
   padding: 4px;
   margin-left: 12px;

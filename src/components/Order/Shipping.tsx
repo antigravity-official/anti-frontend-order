@@ -1,6 +1,7 @@
 import styled from "@emotion/styled";
 import { IShipping } from "../../Models";
 import OrderProduct from "./OrderProduct";
+import Wrapper from "../Wrapper";
 
 interface ISHIPPING {
   [key: string]: string;
@@ -37,16 +38,6 @@ export default function Shipping(prop: IShipping) {
     </Wrapper>
   );
 }
-
-const Wrapper = styled.div`
-  padding: 12px;
-  margin: 12px;
-  border-radius: 8px;
-  border: 1px solid black;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-`;
 
 const ShippingInfo = styled.div`
   padding: 4px;
