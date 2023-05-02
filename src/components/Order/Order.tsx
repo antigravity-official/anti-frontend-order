@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { IOrder } from "../Models";
+import { IOrder } from "../../Models";
 import Shipping from "./Shipping";
 
 interface IORDER {

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./App.css";
 import { IOrder } from "./Models";
 import assetOrder from "./assets/order.json";
-import Order from "./components/Order";
+import Order from "./components/Order/Order";
 
 function App() {
   const [isLoading, setLoading] = useState(false);

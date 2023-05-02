@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { IOrderProduct } from "../Models";
+import { IOrderProduct } from "../../Models";
 
 interface IORDER_PRODUCT {
   [key: string]: string;
