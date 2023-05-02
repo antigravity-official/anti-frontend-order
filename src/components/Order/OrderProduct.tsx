@@ -11,15 +11,19 @@ const ORDER_PRODUCT: IORDER_PRODUCT = {
   price: "가격",
 };
 
-export default function OrderProduct(prop: IOrderProduct) {
-  const stock = prop.stock;
+interface IOrderProductProps {
+  product: IOrderProduct;
+}
+
+export default function OrderProduct({ product }: IOrderProductProps) {
+  const stock = product.stock;
   return (
     <Wrapper>
-      {Object.keys(prop).map((k) => {
+      {Object.keys(product).map((k) => {
         return (
           ORDER_PRODUCT[k] && (
-            <ProductInfo key={prop[k]}>
-              {`${ORDER_PRODUCT[k]}: ${prop[k]}`}
+            <ProductInfo key={product[k]}>
+              {`${ORDER_PRODUCT[k]}: ${product[k]}`}
             </ProductInfo>
           )
         );
