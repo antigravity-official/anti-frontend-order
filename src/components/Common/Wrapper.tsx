@@ -1,12 +1,17 @@
 import styled from "@emotion/styled";
-import { ReactNode } from "react";
+import { HTMLAttributes, ReactNode } from "react";
 
-interface prop {
+interface IWrapperProp
+  extends React.DetailedHTMLProps<
+    HTMLAttributes<HTMLDivElement>,
+    HTMLDivElement
+  > {
   children: ReactNode;
+  props?: any;
 }
 
-export default function Wrapper({ children }: prop) {
-  return <Container>{children}</Container>;
+export default function Wrapper({ children, ...rest }: IWrapperProp) {
+  return <Container {...rest}>{children}</Container>;
 }
 
 const Container = styled.div`
