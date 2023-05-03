@@ -1,4 +1,4 @@
-import { IOrder } from "../Models";
+import { IOrder } from "../types/Models";
 import assetOrder from "../assets/order.json";
 
 export async function fetchMyOrder(onCompleted: (order: IOrder) => void) {

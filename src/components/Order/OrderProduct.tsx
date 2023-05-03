@@ -1,15 +1,7 @@
 import styled from "@emotion/styled";
-import { IOrderProduct } from "../../Models";
+import { IOrderProduct } from "../../types/Models";
 import Wrapper from "../Common/Wrapper";
-
-interface IORDER_PRODUCT {
-  [key: string]: string;
-}
-
-const ORDER_PRODUCT: IORDER_PRODUCT = {
-  name: "상품명",
-  price: "가격",
-};
+import { ORDER_PRODUCT } from "../../constants/constants";
 
 interface IOrderProductProps {
   product: IOrderProduct;

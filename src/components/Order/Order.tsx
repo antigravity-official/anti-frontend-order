@@ -1,15 +1,7 @@
 import styled from "@emotion/styled";
-import { IOrder } from "../../Models";
+import { IOrder } from "../../types/Models";
 import Wrapper from "../Common/Wrapper";
-
-interface IORDER {
-  [key: string]: string;
-}
-
-const ORDER: IORDER = {
-  orderAt: "주문일자",
-  amount: "총 결제금액",
-};
+import { ORDER } from "../../constants/constants";
 
 interface IOrderProps {
   order: IOrder;

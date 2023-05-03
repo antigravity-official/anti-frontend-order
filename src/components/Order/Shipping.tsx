@@ -1,19 +1,8 @@
 import styled from "@emotion/styled";
-import { IShipping } from "../../Models";
+import { IShipping } from "../../types/Models";
 import Wrapper from "../Common/Wrapper";
 import { ReactNode } from "react";
-
-interface ISHIPPING {
-  [key: string]: string;
-}
-
-const SHIPPING: ISHIPPING = {
-  trackingNumber: "송장번호",
-  shippingFee: "배송료",
-  post: "우편번호",
-  address: "주소",
-  message: "메시지",
-};
+import { SHIPPING } from "../../constants/constants";
 
 interface IShippingProps {
   children?: ReactNode;

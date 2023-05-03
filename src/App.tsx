@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./App.css";
-import { IOrder } from "./Models";
+import { IOrder } from "./types/Models";
 import Order from "./components/Order/Order";
 import { fetchMyOrder } from "./api/orderApi";
 import Wrapper from "./components/Common/Wrapper";
