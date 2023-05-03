@@ -30,6 +30,7 @@
    - 추후 타입이 변한다면 해당하는 값을 추가하면 자연스럽게 문구가 추가될 것입니다.
 
 ## 프로그램 구조
+![anti-frontend-diagram](https://user-images.githubusercontent.com/31910942/235932773-3554d5a6-e054-41fa-b041-e2411cf4c67b.png)
 
 ## 변경된 JSON 포맷이 예상과 다를 때
 
