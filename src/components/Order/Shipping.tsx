@@ -16,7 +16,7 @@ const SHIPPING: ISHIPPING = {
 };
 
 interface IShippingProps {
-  children: ReactNode;
+  children?: ReactNode;
   shipping: IShipping;
 }
 
