@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from "react";
 import "./App.css";
-import { IOrder } from "./Models";
-import assetOrder from "./assets/order.json";
-import Order from "./components/Order";
+import { IOrder } from "./types/Models";
+import Order from "./components/Order/Order";
+import { fetchMyOrder } from "./api/orderApi";
+import Wrapper from "./components/Common/Wrapper";
+import Shipping from "./components/Order/Shipping";
+import OrderProduct from "./components/Order/OrderProduct";
 
 function App() {
   const [isLoading, setLoading] = useState(false);
@@ -10,38 +13,33 @@ function App() {
 
   useEffect(() => {
     showProgress();
-    fetchMyOrder((json) => {
-      parseOrder(json, (order) => {
-        setOrder(order);
-        hideProgress();
-      });
-    });
+    const getOrder = async () => {
+      await fetchMyOrder((order) => setOrder(order));
+      hideProgress();
+    };
+    getOrder();
   }, []);
 
   const showProgress = () => setLoading(true);
   const hideProgress = () => setLoading(false);
 
-  const fetchMyOrder = (onCompleted: (json: object) => void) => {
-    setTimeout(() => {
-      onCompleted(assetOrder);
-    }, 1000);
-  };
-
-  const parseOrder = (json: any, onCompleted: (order: IOrder) => void) => {
-    setTimeout(() => {
-      const order: IOrder = {
-        id: json.id,
-        orderAt: new Date(json.orderAt),
-        amount: json.amount,
-        shipping: json.shipping,
-      };
-      onCompleted(order);
-    }, 500);
-  };
-
   return (
     <div>
-      {isLoading || !order ? <div>Loading...</div> : <Order {...order} />}
+      {isLoading || !order ? (
+        <div>Loading...</div>
+      ) : (
+        <Wrapper>
+          <Order order={order} />
+          {order.shipping.map((v) => (
+            <Shipping key={order.id + v.id} shipping={v}>
+              {v.products &&
+                v.products.map((p) => (
+                  <OrderProduct key={order.id + v.id + p.id} product={p} />
+                ))}
+            </Shipping>
+          ))}
+        </Wrapper>
+      )}
     </div>
   );
 }
