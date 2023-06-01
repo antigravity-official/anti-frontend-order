@@ -1,4 +1,8 @@
 # 안티그래비티 프론트엔드 기술과제
+이슬기
+
+## 구성
+- `npm install` 이후에 `npm start`를 실행하면, `localhost:3000`가 열리면서 실행됩니다.
 
 ## 요구사항 반영
 
@@ -7,7 +11,6 @@
 ```
 기존: Order > Shipping + OrderProduct(n)
 변경: Order > Shipping(n) > OrderProduct(n)
-
 ```
 
 - `order.json`의 mock data를 각 Shipping별 해당하는 products 를 담을 수 있도록 했습니다.
@@ -19,7 +22,7 @@
   - **Shipping** : 배송관련 정보
   - **Product** : 주문한 상품의 정보
 
-<img src="" />
+<img src="https://github.com/O3Olivia/anti-frontend-order/assets/87024040/2adba1cd-461a-48cf-8764-1b087ab137ee" width ="300px"/>
 
 #### 3. `recoil`을 사용해 Order 데이터 state를 관리했습니다.
 
@@ -46,5 +49,6 @@
 - React
 - Typescript
 - Recoil
-- react-router-dom, styled-components
 - axios
+- react-router-dom
+- styled-components
