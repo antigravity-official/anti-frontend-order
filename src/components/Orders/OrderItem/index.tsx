@@ -1,4 +1,4 @@
-import ShippingItem from 'components/Shippings/ShippingItem';
+import ShippingItem from 'components/ShippingItem';
 import { Order, Shipping } from 'types';
 
 const OrderItem = (props: Order) => {

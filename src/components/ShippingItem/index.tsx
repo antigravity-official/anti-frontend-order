@@ -1,8 +1,9 @@
-import { Shipping } from 'types';
+import Product from 'components/Product';
+import { OrderProduct, Shipping } from 'types';
 
 const ShippingItem = (props: Shipping) => {
-  const { id, trackingNumber, shippingFee, post, message, address } = props;
-  console.log(props);
+  const { id, trackingNumber, shippingFee, post, message, address, products } =
+    props;
   return (
     <div key={id}>
       <div>
@@ -13,7 +14,9 @@ const ShippingItem = (props: Shipping) => {
           주소: [{post}] {address}
         </p>
         <p>배송메세지: {message}</p>
-        <div>products</div>
+        {products?.map((product: OrderProduct) => (
+          <Product key={product.id} {...product} />
+        ))}
       </div>
     </div>
   );
