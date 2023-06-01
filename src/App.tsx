@@ -16,6 +16,7 @@ function App() {
         <Layout>
           <Routes>
             <Route path={Path.MAIN} element={<MainPage />} />
+            <Route path={Path.ORDERS} element={<OrdersPage />} />
           </Routes>
         </Layout>
       </ThemeProvider>
