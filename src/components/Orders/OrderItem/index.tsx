@@ -1,4 +1,5 @@
-import { Order } from 'types';
+import ShippingItem from 'components/Shippings/ShippingItem';
+import { Order, Shipping } from 'types';
 
 const OrderItem = (props: Order) => {
   const { id, orderAt, amount, shippings, products } = props;
@@ -20,7 +21,15 @@ const OrderItem = (props: Order) => {
             총 결제 금액: <span>KRW {getAmountCurrency()}원</span>
           </p>
         </div>
-        <div>shipping</div>
+        <div>
+          {shippings &&
+            shippings.map((shipping: Shipping) => (
+              <ShippingItem
+                key={shipping.id}
+                {...{ ...shipping, ...products }}
+              />
+            ))}
+        </div>
       </div>
     </div>
   );
