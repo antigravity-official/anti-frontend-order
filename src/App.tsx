@@ -3,12 +3,13 @@ import { Route, Routes } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 
 import Layout from 'components/Layout';
-import MainPage from 'pages/Main';
 import theme from 'components/UI/theme/theme';
+
+import { MainPage, OrdersPage, NotFoundPage } from 'pages';
+
 import Path from 'models/Path';
 
 import './App.css';
-import OrdersPage from 'pages/Orders';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
           <Routes>
             <Route path={Path.MAIN} element={<MainPage />} />
             <Route path={Path.ORDERS} element={<OrdersPage />} />
+            <Route path="*" element={<NotFoundPage />} />
           </Routes>
         </Layout>
       </ThemeProvider>

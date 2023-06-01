@@ -1,8 +1,9 @@
 import ShippingItem from 'components/ShippingItem';
 import { Order, Shipping } from 'types';
 
-const OrderItem = (props: Order) => {
-  const { id, orderAt, amount, shippings, products } = props;
+import * as $ from './OrderItem.styles';
+
+const OrderItem = ({ id, orderAt, amount, shippings, products }: Order) => {
   const getDateString = () => {
     return new Date(orderAt).toISOString().replace('T', ' ').slice(0, -5);
   };
@@ -10,18 +11,18 @@ const OrderItem = (props: Order) => {
     return amount.toLocaleString('ko-KR');
   };
   return (
-    <div key={id}>
+    <$.OrdersSection key={id}>
       <h1>주문 내역</h1>
-      <div>
-        <div>
+      <$.OrdersWrap>
+        <$.OrdersInformation>
           <h2>주문 정보</h2>
           <p>주문번호: {id}</p>
           <p>주문일자: {getDateString()}</p>
           <p>
             총 결제 금액: <span>KRW {getAmountCurrency()}원</span>
           </p>
-        </div>
-        <div>
+        </$.OrdersInformation>
+        <$.Orders_shippingsInformation>
           {shippings &&
             shippings.map((shipping: Shipping) => (
               <ShippingItem
@@ -29,9 +30,9 @@ const OrderItem = (props: Order) => {
                 {...{ ...shipping, ...products }}
               />
             ))}
-        </div>
-      </div>
-    </div>
+        </$.Orders_shippingsInformation>
+      </$.OrdersWrap>
+    </$.OrdersSection>
   );
 };
 

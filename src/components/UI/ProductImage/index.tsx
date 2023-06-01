@@ -4,8 +4,7 @@ interface ImageProps {
   imageUrls: string;
 }
 
-const useProductImage = (props: ImageProps) => {
-  const { imageUrls } = props;
+const useProductImage = ({ imageUrls }: ImageProps) => {
   const handleError = (
     event: React.SyntheticEvent<HTMLImageElement, Event>
   ) => {
@@ -23,7 +22,7 @@ const useProductImage = (props: ImageProps) => {
 export default useProductImage;
 
 export const ProductImage = styled.img`
-  width: 80px;
-  height: 80px;
-  border-radius: 15px;
+  width: 100px;
+  height: 100px;
+  border-radius: 4px;
 `;
