@@ -8,6 +8,7 @@ import theme from 'components/UI/theme/theme';
 import Path from 'models/Path';
 
 import './App.css';
+import OrdersPage from 'pages/Orders';
 
 function App() {
   return (
