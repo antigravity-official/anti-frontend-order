@@ -1,16 +1,16 @@
 import { useEffect, useState } from "react";
-import { OrderModel, OrderProductModel } from "./Models";
+import { OrderModel } from "./Models";
 
 import assetOrder from "./assets/order.json";
 import Loading from "./components/loading/Loading";
 import OrderGroup from "./components/order-group/OrderGroup";
 import ProductGroup from "./components/product-group/ProductGroup";
+import ShippingGroup from "./components/shipping-group/ShippingGroup";
 
 import "./App.css";
 
 function App() {
   const [isLoading, setLoading] = useState(false);
-  // const [orderInfo, setOrderInfo] = useState(Array.of(""));
   const [orderInfo, setOrderInfo] = useState<JSX.Element[]>([]);
 
   useEffect(() => {
@@ -25,7 +25,6 @@ function App() {
 
   const showProgress = () => setLoading(true);
   const hideProgress = () => setLoading(false);
-  // const updateOrderInfo = (info: string[]) => setOrderInfo(info);
   const updateOrderInfo = (info: JSX.Element[]) => setOrderInfo(info);
 
   const fetchMyOrder = (onCompleted: (json: object) => void) => {
@@ -54,17 +53,8 @@ function App() {
     output.push(<p key="orderAmount">총 결제금액: {order.amount}원</p>);
     output.push(<ProductGroup key="productGroup" products={order.products} />);
     output.push(
-      <p key="trackingNumber">송장번호: {order.shipping.trackingNumber}</p>
+      <ShippingGroup key="shippingGroup" shipping={order.shipping} />
     );
-    output.push(
-      <p key="shippingFee">배송료: {order.shipping.shippingFee}원</p>
-    );
-    output.push(
-      <p key="address">
-        주소: [{order.shipping.post}] {order.shipping.address}
-      </p>
-    );
-    output.push(<p key="message">메시지: {order.shipping.message}</p>);
 
     updateOrderInfo(output);
   };

@@ -1,8 +1,14 @@
 import React from "react";
+
 import "./Shipping.css";
 
-const Shipping = () => {
-  return <div>Shipping</div>;
+interface ShippingProps {
+  label: string;
+  value: string | number;
+}
+
+const Shipping = ({ label, value }: ShippingProps) => {
+  return <p>{`${label}: ${value}`}</p>;
 };
 
 export default Shipping;

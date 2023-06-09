@@ -15,7 +15,6 @@ const ProductGroup = ({ products }: ProductGroupProps) => {
       {products.map((product, index) => (
         <Product key={index} product={product} />
       ))}
-      <p>----------------------------</p>
     </div>
   );
 };
