@@ -3,8 +3,8 @@ import { OrderModel, ShippingModel } from "./Models";
 
 import Loading from "./components/loading/Loading";
 import OrderGroup from "./components/order-group/OrderGroup";
-import ShippingGroup from "./components/shipping-group/ShippingGroup";
-import ProductGroup from "./components/product-group/ProductGroup";
+import ShippingGroup from "./components/order-group/shipping-group/ShippingGroup";
+import ProductGroup from "./components/order-group/product-group/ProductGroup";
 
 import "./App.css";
 

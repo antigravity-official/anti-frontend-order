@@ -1,6 +1,6 @@
 import React from "react";
 
-import { OrderProductModel } from "../../../Models";
+import { OrderProductModel } from "../../../../Models";
 
 interface ProductProps {
   product: OrderProductModel;
