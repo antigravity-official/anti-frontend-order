@@ -1,19 +1,25 @@
 import React from "react";
-import { OrderProductModel } from "../../Models";
+import { ShippingModel } from "../../Models";
 
 import Product from "./product/Product";
 
+import "./ProductGroup.css";
+
 interface ProductGroupProps {
-  products: OrderProductModel[];
+  shippingInfo: ShippingModel[];
 }
 
-const ProductGroup = ({ products }: ProductGroupProps) => {
+const ProductGroup = ({ shippingInfo }: ProductGroupProps) => {
+  console.log(shippingInfo);
   return (
-    <div>
-      <p>----------------------------</p>
-      <p>[상품목록]</p>
-      {products.map((product, index) => (
-        <Product key={index} product={product} />
+    <div className="productGroup">
+      <h3>상품정보</h3>
+      {shippingInfo.map((shipping) => (
+        <div key={shipping.id}>
+          {shipping.products.map((product) => (
+            <Product key={product.id} product={product} />
+          ))}
+        </div>
       ))}
     </div>
   );

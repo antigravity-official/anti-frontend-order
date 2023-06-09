@@ -10,7 +10,6 @@ interface ShippingGroupProps {
 }
 
 const ShippingGroup = ({ shippingInfo }: ShippingGroupProps) => {
-  console.log("shippingInfo", shippingInfo);
   return (
     <div>
       <h3>배송정보</h3>

@@ -4,6 +4,7 @@ import { OrderModel, ShippingModel } from "./Models";
 import Loading from "./components/loading/Loading";
 import OrderGroup from "./components/order-group/OrderGroup";
 import ShippingGroup from "./components/shipping-group/ShippingGroup";
+import ProductGroup from "./components/product-group/ProductGroup";
 
 import "./App.css";
 
@@ -46,6 +47,7 @@ function App() {
       <Loading isLoading={isLoading} />
       <OrderGroup orderInfo={orderInfo} />
       <ShippingGroup shippingInfo={shippingInfo} />
+      <ProductGroup shippingInfo={shippingInfo} />
     </div>
   );
 }
