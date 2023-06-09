@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { OrderModel } from "./Models";
 
-import assetOrder from "./assets/order.json";
+import assetOrder from "../public/assets/order.json";
 import Loading from "./components/loading/Loading";
 import OrderGroup from "./components/order-group/OrderGroup";
 import ProductGroup from "./components/product-group/ProductGroup";
