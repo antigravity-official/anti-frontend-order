@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { OrderModel } from "./Models";
 
-import assetOrder from "../public/assets/order.json";
 import Loading from "./components/loading/Loading";
 import OrderGroup from "./components/order-group/OrderGroup";
 import ProductGroup from "./components/product-group/ProductGroup";
@@ -11,58 +10,37 @@ import "./App.css";
 
 function App() {
   const [isLoading, setLoading] = useState(false);
-  const [orderInfo, setOrderInfo] = useState<JSX.Element[]>([]);
+  const [orderInfo, setOrderInfo] = useState<OrderModel>();
 
   useEffect(() => {
     showProgress();
-    fetchMyOrder((json) => {
-      parseOrder(json, (order) => {
-        hideProgress();
-        presentOrder(order);
-      });
-    });
+    fetchMyOrder();
   }, []);
 
   const showProgress = () => setLoading(true);
   const hideProgress = () => setLoading(false);
-  const updateOrderInfo = (info: JSX.Element[]) => setOrderInfo(info);
 
-  const fetchMyOrder = (onCompleted: (json: object) => void) => {
-    setTimeout(() => {
-      onCompleted(assetOrder);
-    }, 1000);
+  const fetchMyOrder = async () => {
+    try {
+      const response = await fetch("/assets/order.json");
+      if (!response.ok) {
+        throw new Error("주문정보를 가져오는데 실패했습니다.");
+      }
+      const orderInfo = await response.json();
+      setOrderInfo(orderInfo);
+    } catch (error) {
+      console.error("에러가 발생했습니다:", error);
+    } finally {
+      hideProgress();
+    }
   };
 
-  const parseOrder = (json: any, onCompleted: (order: OrderModel) => void) => {
-    setTimeout(() => {
-      const order: OrderModel = {
-        id: json.id,
-        orderAt: new Date(json.orderAt),
-        amount: json.amount,
-        products: json.products,
-        shipping: json.shipping,
-      };
-      onCompleted(order);
-    }, 500);
-  };
-
-  const presentOrder = (order: OrderModel) => {
-    let output: JSX.Element[] = [];
-    output.push(<p key="orderId">주문번호: {order.id}</p>);
-    output.push(<p key="orderDate">주문일: {order.orderAt.toString()}</p>);
-    output.push(<p key="orderAmount">총 결제금액: {order.amount}원</p>);
-    output.push(<ProductGroup key="productGroup" products={order.products} />);
-    output.push(
-      <ShippingGroup key="shippingGroup" shipping={order.shipping} />
-    );
-
-    updateOrderInfo(output);
-  };
+  console.log("orderInfo", orderInfo);
 
   return (
     <div>
       <Loading isLoading={isLoading} />
-      <OrderGroup orderInfo={orderInfo} />
+      {/* <OrderGroup orderInfo={orderInfo} /> */}
     </div>
   );
 }
