@@ -6,16 +6,14 @@ import Shipping from "./shipping/Shipping";
 import "./ShippingGroup.css";
 
 interface ShippingGroupProps {
-  shippingInfo: ShippingModel[];
+  shipping: ShippingModel;
 }
 
-const ShippingGroup = ({ shippingInfo }: ShippingGroupProps) => {
+const ShippingGroup = ({ shipping }: ShippingGroupProps) => {
   return (
     <div>
       <h3>배송정보</h3>
-      {shippingInfo.map((shipping) => (
-        <Shipping key={shipping.id} shipping={shipping} />
-      ))}
+      <Shipping shipping={shipping} />
     </div>
   );
 };
