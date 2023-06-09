@@ -1,10 +1,10 @@
 import React from "react";
-import { OrderProduct } from "../../Models";
+import { OrderProductModel } from "../../Models";
 
 import Product from "./product/Product";
 
 interface ProductGroupProps {
-  products: OrderProduct[];
+  products: OrderProductModel[];
 }
 
 const ProductGroup = ({ products }: ProductGroupProps) => {

@@ -1,9 +1,9 @@
 import React from "react";
 
-import { OrderProduct } from "../../../Models";
+import { OrderProductModel } from "../../../Models";
 
 interface ProductProps {
-  product: OrderProduct;
+  product: OrderProductModel;
 }
 
 const Product = ({ product }: ProductProps) => {
