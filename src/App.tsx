@@ -1,16 +1,16 @@
 import { useEffect, useState } from "react";
-import { OrderModel } from "./Models";
+import { OrderModel, ShippingModel } from "./Models";
 
 import Loading from "./components/loading/Loading";
 import OrderGroup from "./components/order-group/OrderGroup";
-import ProductGroup from "./components/product-group/ProductGroup";
 import ShippingGroup from "./components/shipping-group/ShippingGroup";
 
 import "./App.css";
 
 function App() {
   const [isLoading, setLoading] = useState(false);
-  const [orderInfo, setOrderInfo] = useState<OrderModel>();
+  const [orderInfo, setOrderInfo] = useState<OrderModel[]>([]);
+  const [shippingInfo, setShippingInfo] = useState<ShippingModel[]>([]);
 
   useEffect(() => {
     showProgress();
@@ -27,7 +27,13 @@ function App() {
         throw new Error("주문정보를 가져오는데 실패했습니다.");
       }
       const orderInfo = await response.json();
-      setOrderInfo(orderInfo);
+      const orders: OrderModel[] = orderInfo.orders;
+      setOrderInfo(orders);
+
+      const shippingList: ShippingModel[] = orders.flatMap(
+        (order) => order.shippingList
+      );
+      setShippingInfo(shippingList);
     } catch (error) {
       console.error("에러가 발생했습니다:", error);
     } finally {
@@ -35,12 +41,11 @@ function App() {
     }
   };
 
-  console.log("orderInfo", orderInfo);
-
   return (
     <div>
       <Loading isLoading={isLoading} />
-      {/* <OrderGroup orderInfo={orderInfo} /> */}
+      <OrderGroup orderInfo={orderInfo} />
+      <ShippingGroup shippingInfo={shippingInfo} />
     </div>
   );
 }

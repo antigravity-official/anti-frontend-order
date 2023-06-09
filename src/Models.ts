@@ -1,9 +1,19 @@
 export interface OrderModel {
+  shipping: any;
   id: number;
   orderAt: Date;
   amount: number;
+  shippingList: ShippingModel[];
+}
+
+export interface ShippingModel {
+  id: number;
+  trackingNumber: string;
+  shippingFee: number;
+  address: string;
+  post: string;
+  message: string;
   products: OrderProductModel[];
-  shipping: ShippingModel;
 }
 
 export interface OrderProductModel {
@@ -19,13 +29,4 @@ export interface StockModel {
   band: string;
   cup: string;
   quantity: number;
-}
-
-export interface ShippingModel {
-  id: number;
-  trackingNumber: string;
-  shippingFee: number;
-  address: string;
-  post: string;
-  message: string;
 }
