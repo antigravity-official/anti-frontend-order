@@ -1,5 +1,5 @@
 import React from "react";
-import "./ProductGroup.scss";
+import "./ProductGroup.css";
 
 const ProductGroup = () => {
   return <div>ProductGroup</div>;

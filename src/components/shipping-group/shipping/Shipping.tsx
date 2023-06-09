@@ -1,5 +1,5 @@
 import React from "react";
-import "./Shipping.scss";
+import "./Shipping.css";
 
 const Shipping = () => {
   return <div>Shipping</div>;

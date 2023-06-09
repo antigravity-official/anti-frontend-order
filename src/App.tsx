@@ -1,12 +1,16 @@
-import React, { useEffect, useState } from "react";
-import logo from "./logo.svg";
-import "./App.css";
+import { useEffect, useState } from "react";
 import { Order, OrderProduct } from "./Models";
+
 import assetOrder from "./assets/order.json";
+import Loading from "./components/loading/Loading";
+import OrderGroup from "./components/order-group/OrderGroup";
+
+import "./App.css";
 
 function App() {
   const [isLoading, setLoading] = useState(false);
   const [orderInfo, setOrderInfo] = useState(Array.of(""));
+
   useEffect(() => {
     showProgress();
     fetchMyOrder((json) => {
@@ -16,6 +20,8 @@ function App() {
       });
     });
   }, []);
+
+  console.log(orderInfo);
 
   const showProgress = () => setLoading(true);
   const hideProgress = () => setLoading(false);
@@ -71,10 +77,8 @@ function App() {
 
   return (
     <div>
-      {isLoading && <div>Loading...</div>}
-      {orderInfo.map((line) => (
-        <div>{line}</div>
-      ))}
+      <Loading isLoading={isLoading} />
+      <OrderGroup orderInfo={orderInfo} orderId={orderInfo[0]} />
     </div>
   );
 }
