@@ -8,7 +8,8 @@ import "./App.css";
 
 function App() {
   const [isLoading, setLoading] = useState(false);
-  const [orderInfo, setOrderInfo] = useState<OrderModel[]>([]);
+  const [error, setError] = useState<Error | null>(null);
+  const [ordersInfo, setOrdersInfo] = useState<OrderModel[]>([]);
 
   useEffect(() => {
     showProgress();
@@ -24,11 +25,12 @@ function App() {
       if (!response.ok) {
         throw new Error("주문정보를 가져오는데 실패했습니다.");
       }
-      const orderInfo = await response.json();
-      const orders: OrderModel[] = orderInfo.orders;
-      setOrderInfo(orders);
+      const ordersInfo = await response.json();
+      const orders: OrderModel[] = ordersInfo.orders;
+      setOrdersInfo(orders);
     } catch (error) {
-      console.error("에러가 발생했습니다:", error);
+      const err = error instanceof Error ? error : new Error(String(error));
+      setError(err);
     } finally {
       hideProgress();
     }
@@ -37,7 +39,8 @@ function App() {
   return (
     <div>
       <Loading isLoading={isLoading} />
-      <OrderGroup orderInfo={orderInfo} />
+      {error && <div>{error.message}</div>}
+      {ordersInfo && <OrderGroup ordersInfo={ordersInfo} />}
     </div>
   );
 }

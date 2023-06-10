@@ -10,12 +10,21 @@ interface ProductGroupProps {
 }
 
 const ProductGroup = ({ products }: ProductGroupProps) => {
+  if (!Array.isArray(products) || products.length === 0) {
+    return (
+      <div className="productGroup">
+        <h3>상품정보가 없습니다.</h3>
+      </div>
+    );
+  }
+
   return (
     <div className="productGroup">
       <h3>상품정보</h3>
-      {products.map((product) => (
-        <Product key={product.id} product={product} />
-      ))}
+      {products &&
+        products.map((product) => (
+          <Product key={product.id} product={product} />
+        ))}
     </div>
   );
 };

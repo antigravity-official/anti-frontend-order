@@ -7,13 +7,21 @@ import ProductGroup from "./product-group/ProductGroup";
 import "./OrderGroup.css";
 
 interface OrderGroupProps {
-  orderInfo: OrderModel[] | undefined;
+  ordersInfo: OrderModel[];
 }
 
-const OrderGroup = ({ orderInfo }: OrderGroupProps) => {
+const OrderGroup = ({ ordersInfo }: OrderGroupProps) => {
+  if (!Array.isArray(ordersInfo) || ordersInfo.length === 0) {
+    return (
+      <div className="orderGroup">
+        <h3>주문정보가 없습니다.</h3>
+      </div>
+    );
+  }
+
   return (
     <div className="orderGroup">
-      {orderInfo?.map(({ id, amount, orderAt, shippingList }) => (
+      {ordersInfo?.map(({ id, amount, orderAt, shippingList }) => (
         <div key={id}>
           <p>주문번호: {id}</p>
           <p>주문일: {orderAt.toString()}</p>
