@@ -44,31 +44,6 @@
               }
             }
           ]
-        },
-        {
-          "id": 2,
-          "trackingNumber": "T08912739411",
-          "shippingFee": 3000,
-          "address": "서울시 마포구 신수로 15",
-          "post": "121120",
-          "message": "부재시 경비실에 맡겨주세요.",
-          "products": [
-            {
-              "id": 83,
-              "name": "소울 라이트 브라",
-              "price": 34900,
-              "imageUrls": [
-                "https://ecimg.cafe24img.com/pg42b33805115019/antigravity0530/web/product/medium/20221221/acb634ac9ef18fa9671bd1acebf106b4.jpg",
-                "https://fittingnote.com/product/image_zoom2.html?product_no=448&cate_no=85&display_group=1"
-              ],
-              "stock": {
-                "color": "SKIN",
-                "band": "S(65~70)",
-                "cup": "B",
-                "quantity": 1
-              }
-            }
-          ]
         }
       ]
     }

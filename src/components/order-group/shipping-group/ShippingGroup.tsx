@@ -1,4 +1,3 @@
-import React from "react";
 import { ShippingModel } from "../../../Models";
 
 import Shipping from "./shipping/Shipping";

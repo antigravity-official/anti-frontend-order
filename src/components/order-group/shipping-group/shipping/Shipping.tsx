@@ -1,5 +1,3 @@
-import React from "react";
-
 import { ShippingModel } from "../../../../Models";
 
 import "./Shipping.css";

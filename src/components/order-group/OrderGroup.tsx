@@ -1,4 +1,3 @@
-import React from "react";
 import { OrderModel } from "../../Models";
 
 import ShippingGroup from "./shipping-group/ShippingGroup";

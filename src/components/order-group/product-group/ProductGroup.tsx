@@ -1,4 +1,3 @@
-import React from "react";
 import { OrderProductModel } from "../../../Models";
 
 import Product from "./product/Product";
@@ -20,7 +19,7 @@ const ProductGroup = ({ products }: ProductGroupProps) => {
 
   return (
     <div className="productGroup">
-      <h3>상품정보</h3>
+      <h3>상품목록</h3>
       {products &&
         products.map((product) => (
           <Product key={product.id} product={product} />

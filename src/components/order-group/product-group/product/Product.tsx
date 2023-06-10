@@ -1,5 +1,3 @@
-import React from "react";
-
 import { OrderProductModel } from "../../../../Models";
 
 import "./Product.css";
