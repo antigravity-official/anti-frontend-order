@@ -10,8 +10,9 @@ interface ShippingGroupProps {
 
 const ShippingGroup = ({ shipping }: ShippingGroupProps) => {
   return (
-    <div>
-      <h3>배송정보</h3>
+    <div className="shippingGroup">
+      <p>----------------------------</p>
+      <h3>[배송정보]</h3>
       <Shipping shipping={shipping} />
     </div>
   );

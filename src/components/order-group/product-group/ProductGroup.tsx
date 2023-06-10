@@ -19,7 +19,8 @@ const ProductGroup = ({ products }: ProductGroupProps) => {
 
   return (
     <div className="productGroup">
-      <h3>상품목록</h3>
+      <p>----------------------------</p>
+      <h3>[상품목록]</h3>
       {products &&
         products.map((product) => (
           <Product key={product.id} product={product} />

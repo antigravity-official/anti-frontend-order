@@ -24,7 +24,7 @@ const OrderGroup = ({ ordersInfo }: OrderGroupProps) => {
         <div key={id}>
           <p>주문번호: {id}</p>
           <p>주문일: {orderAt.toString()}</p>
-          <p>총 결제금액: {amount}원</p>
+          <p>총 결제금액: {amount.toLocaleString()}원</p>
           {shippingList.map((shipping) => (
             <div key={shipping.id}>
               <ShippingGroup shipping={shipping} />
