@@ -1,5 +1,75 @@
 # 안티그래비티 프론트엔드 기술과제
 
+### 구조
+- ./src
+   - store.ts redux 구성설정이 들어있습니다.
+   - index.tsx
+   - App.tsx
+   - Model.tsx
+
+- ./src/assets
+   - order.json
+
+- ./src/common
+   공통으로 사용할만한 컴포넌트, 기능을 넣어뒀습니다.
+   - ./util / formatter.ts
+     - 날짜, 가격의 포멧을 변경합니다.
+
+   - ./progress / Progress.tsx
+     - 작업이 오래걸리는 경우 isVisible 값을 조정하여 프로그래스를 보여줍니다.
+
+   - ./reducer / loadingSlice.tsx
+     - 로딩상태에 따라 progress를 보여주는 일이 많을 수 있다고 생각하여
+       전역상태로 관리하도록 변경했습니다.
+     - 사용법
+```shell
+     import { useSelector, useDispatch } from 'react-redux'
+     const dispatch = useDispatch();
+     const isLoading = useSelector((state: RootState) => state.loading.isLoading)
+
+     dispatch(showProgress)
+     dispatch(hideProgress)
+```
+
+- ./src/order
+  주문과 관련된 컴포넌트, 기능을 넣어뒀습니다.
+  - OrderInfo.tsx : orderInfo를 배열로 랜더합니다.
+  - ./row / OrderInfoLine.tsx
+    - line prop 공백이 있을 경우 <br>태그를,
+    없을 경우 <div>태그 내 내용을 랜더합니다.
+
+  - ** printer.ts **
+    - Order 를 출력할 수 있는 형태 string[]으로 변환해줍니다.
+    - **예상과 서버에서 내려준 json이 다른 경우, 이 파일을 수정합니다.**
+
+
+## json 이 예상과 다른 경우 아래와 같이 처리합니다.
+   1. assets 내 예상과 다른 json 을 err.json으로 저장합니다.
+   2. import assetOrder from './assets/order.json'; 경로를 err.json으로 변경합니다.
+   3. 타입스크립트 에러메시지를 읽고 Model.ts 내 타입을 변경합니다.
+   4. 변경된 타입에 맞추어 printer.ts , test 파일의 구조를 변경합니다.
+
+
+## 라이브러리
+리덕스 툴킷 (상태관리): https://redux-toolkit.js.org/api/configureStore
+모멘트 (날짜, 시간 포맷): https://momentjs.com/docs/#/displaying/format/
+
+
+
+### 테스트
+- 동일한 이름의 파일 내 위치해있습니다.
+[파일명].(tsx | ts)
+[파일명].test.(tsx | ts)
+
+
+- 테스트방법
+```shell
+npm test
+```
+
+
+
+----------------------------------------------------------------------
 
 ## 과제 내용
 
@@ -32,4 +102,4 @@
 
 ## 중점사항
 - 프로그램 구조 설계
-- 코드의 유지보수 및 확장성 
+- 코드의 유지보수 및 확장성
