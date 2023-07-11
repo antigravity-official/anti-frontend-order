@@ -15,9 +15,13 @@ function App() {
 
     useEffect(() => {
         loadOrder();
-        // eslint-disable-next-line react-hooks/exhaustive-deps
+
+        // 콘솔창에 eslint warning이 없애기 위해 추가
+        // eslint-disable-next-line
     }, []);
     
+
+    // useEffecth 내부 코드를 loadOrder로 분리, async/await를 사용하여 비동기 처리
     const loadOrder = async () => {
         showProgress();
         const json = await fetchMyOrder(assetOrder);
