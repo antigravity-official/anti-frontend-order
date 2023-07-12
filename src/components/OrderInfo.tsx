@@ -1,5 +1,6 @@
-import { FC } from "react";
-import { Order, OrderProduct } from "../Models";
+import type { FC } from "react";
+import { Order } from "../Models";
+import OrderProductInfo from "./OrderProductInfo";
 
 interface Props {
   order: Order;
@@ -13,16 +14,7 @@ const OrderInfo: FC<Props> = ({ order }) => {
       <p>총 결제금액 : {order.amount}</p>
       <p>----------------------------</p>
       <p>[상품목록]</p>
-      {order.products.map((product: OrderProduct) => (
-        <div key={product.id}>
-          <p>상품명 : {product.name}</p>
-          <p>가격 : {product.price}</p>
-          <p>
-            주문 정보 : {product.stock.color}/{product.stock.band}/
-            {product.stock.cup}/{product.stock.quantity}개
-          </p>
-        </div>
-      ))}
+      <OrderProductInfo order={order} />
       <p>----------------------------</p>
       <p>[배송정보]</p>
       <p>송장번호: {order.shipping.trackingNumber}</p>
