@@ -1,7 +1,9 @@
 {
-  "id": 100,
-  "orderAt": "2023-01-01 12:13:14",
-  "amount": 77700,
+  "paymentInfo": {
+    "id": 100,
+    "orderAt": "2023-01-01 12:13:14",
+    "amount": 77700
+  },
   "products": [
     {
       "id": 51,
