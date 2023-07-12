@@ -14,7 +14,7 @@ const OrderInfo: FC<Props> = ({ order }) => {
       <p>주문일 : {order.orderAt.toString()}</p>
       <p>총 결제금액 : {order.amount}</p>
       <p>----------------------------</p>
-      <OrderProductLists order={order} />
+      <OrderProductLists productLists={order.products} />
       <p>----------------------------</p>
       <ShippingInfo shippingInfo={order.shipping} />
     </div>

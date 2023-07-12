@@ -1,15 +1,15 @@
 import type { FC } from "react";
-import { Order, OrderProduct } from "../Models";
+import { OrderProduct } from "../Models";
 
 interface Props {
-  order: Order;
+  productLists: OrderProduct[];
 }
 
-const OrderProductLists: FC<Props> = ({ order }) => {
+const OrderProductLists: FC<Props> = ({ productLists }) => {
   return (
     <div>
       <p>[상품목록]</p>
-      {order.products.map((product: OrderProduct) => (
+      {productLists.map((product: OrderProduct) => (
         <div key={product.id}>
           <p>상품명 : {product.name}</p>
           <p>가격 : {product.price}</p>
