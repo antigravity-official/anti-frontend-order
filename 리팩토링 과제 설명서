@@ -1,15 +1,26 @@
-### 컴포넌트 분리
+### 컴포넌트 구조
 
-- Order > Shipping(n) > OrderProduct(n)으로 구조가 변경됨에 따라 컴포넌트를 분리하여 각각 독립적으로 사용할 수 있도록 수정했습니다.
+- Order > Shipping(n) > OrderProduct(n)으로 구조 변경 예정에 따라 컴포넌트를 분리하여 각각 독립적으로 사용할 수 있도록 수정했습니다.
+- OrderInfo 컴포넌트는 전체 주문 상세를 보여주는 컴포넌트입니다.
 - OrderPaymentInfo 컴포넌트는 주문 결제 정보를 보여주는 컴포넌트입니다.
+- ShippingInfo 컴포넌트는 배송 정보와 배송에 포함된 상품 정보를 보여주는 컴포넌트입니다.
 - OrderProductLists 컴포넌트는 주문한 상품 목록들을 보여주는 컴포넌트입니다.
-- ShippingInfo 컴포넌트는 배송 정보를 보여주는 컴포넌트입니다.
 
 ### 함수 분리
 
 - fetchOrder / parseOrder 함수를 독립적으로 사용할 수 있도록 분리하였습니다.
 - useEffect 내부에 있던 코드를 showOrder로 분리하고 비동기적으로 처리하였습니다.
+- 'react-fns' 라이브러리를 사용해 주문일 날짜형식을 수정했습니다.
 
-### JSON 포맷 변경
+### JSON 포맷
 
-- 주문결제정보 컴포넌트를 만들기 위해 기존 결제 정보(id, orderAt, amount)를 paymentInfo 객체로 이동시켰습니다.
+##### 변경점
+
+- 주문결제정보 컴포넌트를 만들기 위해 기존 결제 정보(id, orderAt, amount)를 paymentInfo 객체로 변경했습니다.
+- 한 배송정보에 여러개의 상품정보가 보여야 하기 때문에 shipping > products[] 의 구조로 변경했습니다.
+
+#### 변경된 JSON 포맷이 예상과 다를 때
+
+- 우선 Models.ts 내부에 있는 데이터 타입의 형식을 변경합니다.
+- parseOrder 함수 내부의 order 객체를 수정합니다.
+- OrderInfo 컴포넌트에서 각 컴포넌트에 필요한 값에 맞춰 데이터를 내려줍니다.
