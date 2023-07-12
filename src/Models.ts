@@ -30,6 +30,6 @@ export interface Shipping {
 
 export interface PaymentInfo {
   id: number;
-  orderAt: Date;
+  orderAt: string;
   amount: number;
 }

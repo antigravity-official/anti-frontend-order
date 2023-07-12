@@ -12,7 +12,7 @@ const OrderProductLists: FC<Props> = ({ productLists }) => {
       {productLists.map((product: OrderProduct) => (
         <div key={product.id}>
           <p>상품명 : {product.name}</p>
-          <p>가격 : {product.price}</p>
+          <p>가격 : {product.price}원</p>
           <p>
             주문 정보 : {product.stock.color}/{product.stock.band}/
             {product.stock.cup}/{product.stock.quantity}개
