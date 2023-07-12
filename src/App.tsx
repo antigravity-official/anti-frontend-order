@@ -19,10 +19,16 @@ function App() {
 
   const showOrder = async () => {
     showProgress();
-    const fetch = await fetchMyOrder(assetOrder);
-    const parse = await parseOrder(fetch);
-    hideProgress();
-    setOrder(parse);
+
+    try {
+      const fetchedOrder = await fetchMyOrder(assetOrder);
+      const parsedOrder = await parseOrder(fetchedOrder);
+      setOrder(parsedOrder);
+    } catch {
+      throw new Error("데이터를 불러오는 도중 에러가 발생했습니다.");
+    } finally {
+      hideProgress();
+    }
   };
 
   return (
