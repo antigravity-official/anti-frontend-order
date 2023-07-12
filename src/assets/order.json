@@ -4,44 +4,44 @@
     "orderAt": "2023-01-01 12:13:14",
     "amount": 77700
   },
-  "products": [
-    {
-      "id": 51,
-      "name": "더핏브라",
-      "price": 42800,
-      "imageUrls": [
-        "https://ecimg.cafe24img.com/pg42b33805115019/antigravity0530/web/product/medium/20221213/4f5dd3c9e05bcc7ed4b880e3549fc8e0.jpg",
-        "https://fittingnote.com/product/image_zoom2.html?product_no=11&cate_no=84&display_group=1"
-      ],
-      "stock": {
-        "color": "BLACK",
-        "band": "M(75)",
-        "cup": "A",
-        "quantity": 1
-      }
-    },
-    {
-      "id": 83,
-      "name": "소울 라이트 브라",
-      "price": 34900,
-      "imageUrls": [
-        "https://ecimg.cafe24img.com/pg42b33805115019/antigravity0530/web/product/medium/20221221/acb634ac9ef18fa9671bd1acebf106b4.jpg",
-        "https://fittingnote.com/product/image_zoom2.html?product_no=448&cate_no=85&display_group=1"
-      ],
-      "stock": {
-        "color": "SKIN",
-        "band": "S(65~70)",
-        "cup": "B",
-        "quantity": 1
-      }
-    }
-  ],
   "shipping": {
     "id": 8,
     "trackingNumber": "T08912739410",
     "shippingFee": 3000,
     "address": "서울시 강남구 논현로 650-1",
     "post": "06106",
-    "message": "안전한 배송 부탁드립니다."
+    "message": "안전한 배송 부탁드립니다.",
+    "products": [
+      {
+        "id": 51,
+        "name": "더핏브라",
+        "price": 42800,
+        "imageUrls": [
+          "https://ecimg.cafe24img.com/pg42b33805115019/antigravity0530/web/product/medium/20221213/4f5dd3c9e05bcc7ed4b880e3549fc8e0.jpg",
+          "https://fittingnote.com/product/image_zoom2.html?product_no=11&cate_no=84&display_group=1"
+        ],
+        "stock": {
+          "color": "BLACK",
+          "band": "M(75)",
+          "cup": "A",
+          "quantity": 1
+        }
+      },
+      {
+        "id": 83,
+        "name": "소울 라이트 브라",
+        "price": 34900,
+        "imageUrls": [
+          "https://ecimg.cafe24img.com/pg42b33805115019/antigravity0530/web/product/medium/20221221/acb634ac9ef18fa9671bd1acebf106b4.jpg",
+          "https://fittingnote.com/product/image_zoom2.html?product_no=448&cate_no=85&display_group=1"
+        ],
+        "stock": {
+          "color": "SKIN",
+          "band": "S(65~70)",
+          "cup": "B",
+          "quantity": 1
+        }
+      }
+    ]
   }
 }

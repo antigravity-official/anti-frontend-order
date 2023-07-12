@@ -26,6 +26,7 @@ export interface Shipping {
   address: string;
   post: string;
   message: string;
+  products: OrderProduct[];
 }
 
 export interface PaymentInfo {
