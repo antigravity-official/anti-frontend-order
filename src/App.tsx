@@ -33,8 +33,7 @@ function App() {
 
   return (
     <div>
-      {isLoading && <div>Loading...</div>}
-      {order && <OrderInfo order={order} />}
+      {isLoading ? <div>Loading...</div> : order && <OrderInfo order={order} />}
     </div>
   );
 }
