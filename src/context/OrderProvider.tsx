@@ -1,7 +1,6 @@
 import { createContext, useContext, useEffect, useState } from 'react';
 import { Order } from '../model/Models';
-import { fetchMyOrder } from '../hooks/fetchMyOrder';
-import { parseOrder } from '../hooks/parseOrder';
+import { fetchMyOrder } from '../api/fetchMyOrder';
 import assetOrder from '../assets/order.json';
 
 const defaultValue = {
@@ -34,6 +33,23 @@ export const OrderProvider = ({ children }: { children: React.ReactNode }) => {
 
   const showProgress = () => setLoading(true);
   const hideProgress = () => setLoading(false);
+
+  const parseOrder = (json: any): Promise<Order> => {
+    const { id, orderAt, amount, products, shipping } = json;
+
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        const order: Order = {
+          id: id,
+          orderAt: orderAt,
+          amount: amount,
+          products: products,
+          shipping: shipping,
+        };
+        resolve(order);
+      }, 500);
+    });
+  };
 
   useEffect(() => {
     fetchOrder();
