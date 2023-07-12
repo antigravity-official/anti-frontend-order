@@ -5,9 +5,10 @@ interface Props {
   order: Order;
 }
 
-const OrderProductInfo: FC<Props> = ({ order }) => {
+const OrderProductLists: FC<Props> = ({ order }) => {
   return (
     <div>
+      <p>[상품목록]</p>
       {order.products.map((product: OrderProduct) => (
         <div key={product.id}>
           <p>상품명 : {product.name}</p>
@@ -22,4 +23,4 @@ const OrderProductInfo: FC<Props> = ({ order }) => {
   );
 };
 
-export default OrderProductInfo;
+export default OrderProductLists;
