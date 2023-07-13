@@ -1,7 +1,22 @@
 export interface Order {
   paymentInfo: PaymentInfo;
-  products: OrderProduct[];
   shipping: Shipping;
+}
+
+export interface PaymentInfo {
+  id: number;
+  orderAt: string;
+  amount: number;
+}
+
+export interface Shipping {
+  id: number;
+  trackingNumber: string;
+  shippingFee: number;
+  address: string;
+  post: string;
+  message: string;
+  products: OrderProduct[];
 }
 
 export interface OrderProduct {
@@ -17,20 +32,4 @@ export interface Stock {
   band: string;
   cup: string;
   quantity: number;
-}
-
-export interface Shipping {
-  id: number;
-  trackingNumber: string;
-  shippingFee: number;
-  address: string;
-  post: string;
-  message: string;
-  products: OrderProduct[];
-}
-
-export interface PaymentInfo {
-  id: number;
-  orderAt: string;
-  amount: number;
 }

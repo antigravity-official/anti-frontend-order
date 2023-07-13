@@ -5,7 +5,6 @@ const parseOrder = (fetchOrder: any): Promise<Order> => {
     setTimeout(() => {
       const order: Order = {
         paymentInfo: fetchOrder.paymentInfo,
-        products: fetchOrder.products,
         shipping: fetchOrder.shipping,
       };
       resolve(order);
