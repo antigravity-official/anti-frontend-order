@@ -1,6 +1,6 @@
 import { Order } from "../Models";
 
-const parseOrder = (fetchOrder: any): Promise<Order> => {
+const parseOrder = (fetchOrder: Order): Promise<Order> => {
   return new Promise((resolve) => {
     setTimeout(() => {
       const order: Order = {

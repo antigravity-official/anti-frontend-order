@@ -1,4 +1,6 @@
-const fetchMyOrder = (assetOrder: any): Promise<object> => {
+import { Order } from "../Models";
+
+const fetchMyOrder = (assetOrder: Order): Promise<Order> => {
   return new Promise((resolve) => {
     setTimeout(() => {
       resolve(assetOrder);
