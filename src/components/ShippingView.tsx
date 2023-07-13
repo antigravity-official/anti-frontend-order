@@ -1,8 +1,7 @@
-import { useOrder } from '../context/OrderProvider';
+import { useOrder } from '../context';
 
 export const ShippingView = () => {
   const { order } = useOrder();
-
   const { trackingNumber, shippingFee, post, address, message } =
     order.shipping;
 

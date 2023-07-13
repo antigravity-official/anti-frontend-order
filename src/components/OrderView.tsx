@@ -1,8 +1,7 @@
-import { useOrder } from '../context/OrderProvider';
+import { useOrder } from '../context';
 
 export const OrderView = () => {
   const { order } = useOrder();
-
   const { id, orderAt, amount } = order;
 
   return (

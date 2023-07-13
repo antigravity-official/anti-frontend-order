@@ -1,4 +1,4 @@
-import { useOrder } from './context/OrderProvider';
+import { useOrder } from './context';
 import { OrderView } from './components/OrderView';
 import { ProductsView } from './components/ProductsView';
 import { ShippingView } from './components/ShippingView';

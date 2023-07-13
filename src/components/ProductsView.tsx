@@ -1,13 +1,12 @@
-import { useOrder } from '../context/OrderProvider';
-import { OrderProduct, Stock } from '../model/Models';
+import { useOrder } from '../context';
 
 export const ProductsView = () => {
   const { order } = useOrder();
 
   return (
     <>
-      {order.products.map(({ id, name, price, stock }: OrderProduct) => {
-        const { color, band, cup, quantity }: Stock = stock;
+      {order.products.map(({ id, name, price, stock }) => {
+        const { color, band, cup, quantity } = stock;
 
         return (
           <div key={id}>

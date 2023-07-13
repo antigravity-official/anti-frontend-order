@@ -1,38 +1,30 @@
-import { createContext, useContext, useEffect, useState } from 'react';
-import { Order } from '../model/Models';
+import { useEffect, useState } from 'react';
+import { OrderContext, defaultValue } from '.';
 import { fetchMyOrder } from '../api/fetchMyOrder';
+import { Order } from '../model/Models';
 import assetOrder from '../assets/order.json';
 
-const defaultValue = {
-  order: {
-    id: 0,
-    orderAt: new Date(),
-    amount: 0,
-    products: [],
-    shipping: {
-      id: 0,
-      trackingNumber: '',
-      shippingFee: 0,
-      address: '',
-      post: '',
-      message: '',
-    },
-  },
-  isLoading: false,
-};
+interface Provider {
+  children: React.ReactNode;
+}
 
-const OrderContext = createContext<{ order: Order; isLoading: boolean }>(
-  defaultValue
-);
-
-export const useOrder = () => useContext(OrderContext);
-
-export const OrderProvider = ({ children }: { children: React.ReactNode }) => {
-  const [isLoading, setLoading] = useState(defaultValue.isLoading);
+export const OrderProvider = ({ children }: Provider) => {
   const [order, setOrder] = useState<Order>(defaultValue.order);
+  const [isLoading, setLoading] = useState(defaultValue.isLoading);
 
-  const showProgress = () => setLoading(true);
-  const hideProgress = () => setLoading(false);
+  useEffect(() => {
+    getOrder();
+  }, []);
+
+  const getOrder = async () => {
+    toggleProgress();
+    const json = await fetchMyOrder(assetOrder);
+    const order = await parseOrder(json);
+    toggleProgress();
+    setOrder(order);
+  };
+
+  const toggleProgress = () => setLoading((prev) => !prev);
 
   const parseOrder = (json: any): Promise<Order> => {
     const { id, orderAt, amount, products, shipping } = json;
@@ -49,20 +41,6 @@ export const OrderProvider = ({ children }: { children: React.ReactNode }) => {
         resolve(order);
       }, 500);
     });
-  };
-
-  useEffect(() => {
-    fetchOrder();
-  }, []);
-
-  const fetchOrder = async () => {
-    showProgress();
-
-    const json = await fetchMyOrder(assetOrder);
-    const order = await parseOrder(json);
-
-    hideProgress();
-    setOrder(order);
   };
 
   return (
