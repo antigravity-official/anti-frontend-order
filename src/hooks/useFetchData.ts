@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { Order } from "../Models";
-import { fetchMyOrder } from "./fetchMyOrder";
-import { parseOrder } from "./parseOrder";
 import assetOrder from "../assets/order.json";
+import { fetchMyOrder } from "../utils/fetchMyOrder";
+import { parseOrder } from "../utils/parseOrder";
 
 const useFetchData = () => {
   const [isLoading, setIsLoading] = useState(false);

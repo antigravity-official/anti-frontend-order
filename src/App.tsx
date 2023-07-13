@@ -1,7 +1,7 @@
 import React from "react";
 import "./App.css";
 import OrderInfo from "./components/OrderInfo";
-import useFetchData from "./utils/fetchData";
+import useFetchData from "./hooks/useFetchData";
 
 function App() {
   const { isLoading, order } = useFetchData();
