@@ -1,4 +1,4 @@
-export const fetchMyOrder = (assetOrder: any): Promise<object> => {
+export const fetchMyOrder = (assetOrder: object): Promise<object> => {
   return new Promise((resolve) => {
     setTimeout(() => {
       resolve(assetOrder);

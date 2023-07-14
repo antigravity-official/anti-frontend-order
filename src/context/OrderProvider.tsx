@@ -19,14 +19,14 @@ export const OrderProvider = ({ children }: Provider) => {
   const getOrder = async () => {
     toggleProgress();
     const json = await fetchMyOrder(assetOrder);
-    const order = await parseOrder(json);
+    const order = await parseOrder(json as Order);
     toggleProgress();
     setOrder(order);
   };
 
   const toggleProgress = () => setLoading((prev) => !prev);
 
-  const parseOrder = (json: any): Promise<Order> => {
+  const parseOrder = (json: Order): Promise<Order> => {
     const { id, orderAt, amount, products, shipping } = json;
 
     return new Promise((resolve) => {
