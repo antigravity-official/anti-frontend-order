@@ -1,0 +1,60 @@
+@import url("./_abstracts.scss");
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+ul {
+    li {
+        list-style-type: none;
+    }
+}
+body {
+    padding: 10px;
+    font-size: 13px;
+}
+.order-box {
+    padding: 10px;
+    .summary-box {
+        padding: 20px;
+        ul {
+            li {
+                gap: 10px;
+                font-size: 16px;
+            }
+        }
+    }
+    .order-container {
+        padding: 10px;
+        border-bottom: 1px solid #ddd;
+    }
+}
+
+.product-box {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-top: 10px;
+    &:first-child {
+        margin-top: 0;
+    }
+    .thumbnail {
+        width: 100px;
+        img {
+            display: block;
+            width: 100%;
+        }
+    }
+    ul {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        li {
+            list-style-type: none;
+        }
+    }
+}
+.shipping-box {
+    margin-top: 20px;
+}
