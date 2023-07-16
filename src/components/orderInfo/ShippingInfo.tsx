@@ -5,5 +5,20 @@ interface ProductInfoProps {
 }
 
 export default function ShippingInfo({ data }: ProductInfoProps) {
-  return <h1>배송정보</h1>;
+  let output: string[] = [];
+  const println = (text: string) => output.push(text);
+
+  println(`[배송정보]`);
+  println(`송장번호: ${data.trackingNumber}`);
+  println(`배송료: ${data.shippingFee}원`);
+  println(`주소: [${data.post}] ${data.address}`);
+  println(`메시지: ${data.message}`);
+
+  return (
+    <>
+      {output.map((line) => (
+        <div>{line}</div>
+      ))}
+    </>
+  );
 }
