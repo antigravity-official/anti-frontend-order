@@ -1,7 +1,7 @@
-import { OrderProduct } from "../../type/Models";
+import * as T from "../../type/Models";
 
 interface ProductInfoProps {
-  data: OrderProduct[];
+  data: T.OrderProduct[];
 }
 
 export default function ProductInfo({ data }: ProductInfoProps) {
@@ -10,7 +10,7 @@ export default function ProductInfo({ data }: ProductInfoProps) {
 
   println(`[상품목록]`);
   println(``);
-  data.forEach((p: OrderProduct) => {
+  data.forEach((p: T.OrderProduct) => {
     println(`상품명: ${p.name}`);
     println(`가격: ${p.price}원`);
     println(

@@ -1,7 +1,7 @@
-import { Shipping } from "../../type/Models";
+import * as T from "../../type/Models";
 
 interface ProductInfoProps {
-  data: Shipping;
+  data: T.Shipping;
 }
 
 export default function ShippingInfo({ data }: ProductInfoProps) {
