@@ -1,4 +1,5 @@
 import * as T from "../../type/Models";
+import DivLines from "../../utils/DivLines";
 
 interface ProductInfoProps {
   data: T.OrderProduct[];
@@ -19,11 +20,5 @@ export default function ProductInfo({ data }: ProductInfoProps) {
     println(``);
   });
 
-  return (
-    <>
-      {output.map((line) => (
-        <div>{line}</div>
-      ))}
-    </>
-  );
+  return <DivLines output={output} />;
 }

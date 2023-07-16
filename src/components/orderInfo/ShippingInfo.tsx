@@ -1,4 +1,5 @@
 import * as T from "../../type/Models";
+import DivLines from "../../utils/DivLines";
 
 interface ProductInfoProps {
   data: T.Shipping;
@@ -14,11 +15,5 @@ export default function ShippingInfo({ data }: ProductInfoProps) {
   println(`주소: [${data.post}] ${data.address}`);
   println(`메시지: ${data.message}`);
 
-  return (
-    <>
-      {output.map((line) => (
-        <div>{line}</div>
-      ))}
-    </>
-  );
+  return <DivLines output={output} />;
 }

@@ -1,4 +1,5 @@
 import * as T from "../../type/Models";
+import DivLines from "../../utils/DivLines";
 import Divider from "./Divider";
 import ProductInfo from "./ProductInfo";
 import ShippingInfo from "./ShippingInfo";
@@ -19,9 +20,7 @@ export default function OrderInfo({ data }: OrderInfoProps) {
 
   return (
     <div>
-      {output.map((line) => (
-        <div>{line}</div>
-      ))}
+      <DivLines output={output} />
       <Divider />
       <ProductInfo data={data.products} />
       <Divider />
