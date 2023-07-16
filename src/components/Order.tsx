@@ -5,8 +5,8 @@ import { getOrderInfo } from "../api/order";
 import * as T from "../type/Models";
 
 import OrderInfo from "./orderInfo/OrderInfo";
-import Loading from "./Loading";
-import Error from "./Error";
+import Loading from "./shared/Loading";
+import Error from "./shared/Error";
 
 interface OrderInfoProps {
   orderNo?: number;
