@@ -1,9 +1,12 @@
-import * as T from "../type/Models";
-import { useQuery } from "@tanstack/react-query";
-import { getOrderInfo } from "../api/order";
-import Loading from "./Loading";
-import OrderInfo from "./orderInfo/OrderInfo";
 import { useState } from "react";
+import { useQuery } from "@tanstack/react-query";
+
+import { getOrderInfo } from "../api/order";
+import * as T from "../type/Models";
+
+import OrderInfo from "./orderInfo/OrderInfo";
+import Loading from "./Loading";
+import Error from "./Error";
 
 interface OrderInfoProps {
   orderNo?: number;
@@ -38,6 +41,6 @@ export default function Order({ orderNo = 100 }: OrderInfoProps) {
       return <OrderInfo data={order} />;
     case "error":
       console.log(orderQuery.error);
-      return <Loading />;
+      return <Error />;
   }
 }
