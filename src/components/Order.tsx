@@ -35,7 +35,7 @@ export default function Order({ orderNo = 100 }: OrderInfoProps) {
     case "loading":
       return <Loading />;
     case "success":
-      return <OrderInfo data={order && order} />;
+      return <OrderInfo data={order} />;
     case "error":
       console.log(orderQuery.error);
       return <Loading />;

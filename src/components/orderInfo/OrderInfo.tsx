@@ -8,6 +8,8 @@ interface OrderInfoProps {
 }
 
 export default function OrderInfo({ data }: OrderInfoProps) {
+  if (!data) return null;
+
   let output: string[] = [];
   const println = (text: string) => output.push(text);
 
@@ -21,9 +23,9 @@ export default function OrderInfo({ data }: OrderInfoProps) {
         <div>{line}</div>
       ))}
       <Divider />
-      {data?.products && <ProductInfo data={data.products} />}
+      <ProductInfo data={data.products} />
       <Divider />
-      {data?.shipping && <ShippingInfo data={data.shipping} />}
+      <ShippingInfo data={data.shipping} />
     </div>
   );
 }
