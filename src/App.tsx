@@ -1,42 +1,27 @@
 import React, { useEffect, useState } from "react";
-import { Order, OrderProduct } from "./Models";
 import assetOrder from "./assets/order.json";
+import { Order } from "./models/Order";
+import { OrderProduct } from "./models/Product";
+import { fetchMyOrder } from "./apis/Order";
 
 function App() {
   const [isLoading, setLoading] = useState(false);
   const [orderInfo, setOrderInfo] = useState(Array.of(""));
+
   useEffect(() => {
-    showProgress();
-    fetchMyOrder((json) => {
-      parseOrder(json, (order) => {
-        hideProgress();
-        presentOrder(order);
-      });
-    });
+    const fetchOrder = async () => {
+      setLoading(true);
+      const myOrder = await fetchMyOrder();
+      setLoading(false);
+      setOrderInfo(myOrder);
+    };
+
+    fetchOrder();
   }, []);
 
   const showProgress = () => setLoading(true);
   const hideProgress = () => setLoading(false);
   const updateOrderInfo = (info: string[]) => setOrderInfo(info);
-
-  const fetchMyOrder = (onCompleted: (json: object) => void) => {
-    setTimeout(() => {
-      onCompleted(assetOrder);
-    }, 1000);
-  };
-
-  const parseOrder = (json: any, onCompleted: (order: Order) => void) => {
-    setTimeout(() => {
-      const order: Order = {
-        id: json.id,
-        orderAt: new Date(json.orderAt),
-        amount: json.amount,
-        products: json.products,
-        shipping: json.shipping,
-      };
-      onCompleted(order);
-    }, 500);
-  };
 
   const presentOrder = (order: Order) => {
     let output: string[] = [];
