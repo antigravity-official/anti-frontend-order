@@ -1,7 +1,7 @@
 import React from 'react';
-import { Shipping } from '../../models/Shipping';
+import { Shipping } from '../../redux/types/myOrder/Shipping';
 import ProductInfo from './ProductInfo';
-import { OrderProduct } from '../../models/Product';
+import { OrderProduct } from '../../redux/types/myOrder/Product';
 import {
   COLON,
   KOR_WON,

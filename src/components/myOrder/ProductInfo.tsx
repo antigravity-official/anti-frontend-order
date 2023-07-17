@@ -1,5 +1,5 @@
 import React from 'react';
-import { OrderProduct } from '../../models/Product';
+import { OrderProduct } from '../../redux/types/myOrder/Product';
 import { COLON, EA, KOR_WON, ORDER_INFO, PRICE, PRODUCT_LIST, PRODUCT_NAME } from '../../assets/constants';
 import { addCommas } from '../common/AddCommas';
 
@@ -20,7 +20,9 @@ const ProductInfo: React.FC<{ product: OrderProduct }> = ({ product }) => (
     <div>
       {ORDER_INFO}
       {COLON}
-      {product.stock.color}/{product.stock.band}/{product.stock.cup} {product.stock.quantity}{EA}
+      {product.stock.color}/{product.stock.band}/{product.stock.cup}
+      {product.stock.quantity}
+      {EA}
     </div>
   </div>
 );

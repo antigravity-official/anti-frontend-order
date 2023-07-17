@@ -1,5 +1,5 @@
 import React from 'react';
-import { Order } from '../../models/Order';
+import { Order } from '../../redux/types/myOrder/Order';
 import { COLON, KOR_WON, ORDER_DATE, ORDER_NUMBER, TOTAL_AMOUNT } from '../../assets/constants';
 import { addCommas } from '../common/AddCommas';
 

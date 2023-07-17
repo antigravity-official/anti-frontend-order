@@ -6,9 +6,9 @@ export interface Stock {
 }
 
 export interface OrderProduct {
-  id: number
-  name: string
-  price: number
-  imageUrls: string[]
-  stock: Stock
+  id: number;
+  name: string;
+  price: number;
+  imageUrls: string[];
+  stock: Stock;
 }
