@@ -4,16 +4,16 @@ import { COLON, KOR_WON, ORDER_DATE, ORDER_NUMBER, TOTAL_AMOUNT } from '../../as
 import { addCommas } from '../common/AddCommas';
 
 const OrderInfo: React.FC<{ order: Order }> = ({ order }) => (
-  <div>
-    <div>
-      {ORDER_NUMBER}
-      {COLON}
-      {order.id}
-    </div>
+  <div className="flex justify-between">
     <div>
       {ORDER_DATE}
       {COLON}
       {order.orderAt.toLocaleString()}
+    </div>
+    <div>
+      {ORDER_NUMBER}
+      {COLON}
+      {order.id}
     </div>
     <div>
       {TOTAL_AMOUNT}

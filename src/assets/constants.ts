@@ -1,10 +1,11 @@
 // common
-const COLON = ': ';
+const COLON = ' : ';
 const KOR_WON = '원';
+const ORDER_INQUIRY = '주문조회';
 
 // components > myOrder > OrderInfo
 const ORDER_NUMBER = '주문번호';
-const ORDER_DATE = '주문일';
+const ORDER_DATE = '주문일자';
 const TOTAL_AMOUNT = '총 결제금액';
 
 // components > myOrder > ProductInfo
@@ -21,9 +22,16 @@ const SHIPPING_FEE = '배송료';
 const SHIPPING_ADDRESS = '주소';
 const SHIPPING_MESSAGE = '메세지';
 
-// components > pages > App
+// components > pages > Main
+const LOGOUT = '로그아웃';
+const MYPAGE = '마이페이지';
+
+// components > pages > MyOrder
 const ERROR = 'Error';
 const NO_ORDER_INFO_MESSAGE = '주문 내역이 없습니다.';
+const MY_SHOPPING = '마이쇼핑';
+const ORDER_PRODUCT_INFO = '주문 상품 정보';
+
 export {
   COLON,
   KOR_WON,
@@ -42,4 +50,9 @@ export {
   SHIPPING_MESSAGE,
   ERROR,
   NO_ORDER_INFO_MESSAGE,
+  ORDER_INQUIRY,
+  LOGOUT,
+  MYPAGE,
+  MY_SHOPPING,
+  ORDER_PRODUCT_INFO,
 };
