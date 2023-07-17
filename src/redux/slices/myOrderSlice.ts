@@ -17,16 +17,16 @@ const myOrderSlice = createSlice({
   name: 'myOrder',
   initialState,
   reducers: {
-    fetchMyOrderStart(state) {
+    fetchMyOrderStart(state: MyOrderState) {
       state.loading = true;
       state.error = null;
     },
-    fetchMyOrderSuccess(state, action: PayloadAction<Order>) {
+    fetchMyOrderSuccess(state: MyOrderState, action: PayloadAction<Order>) {
       state.orderInfo = action.payload;
       state.loading = false;
       state.error = null;
     },
-    fetchMyOrderFailure(state, action: PayloadAction<string>) {
+    fetchMyOrderFailure(state: MyOrderState, action: PayloadAction<string>) {
       state.loading = false;
       state.error = action.payload;
     },
