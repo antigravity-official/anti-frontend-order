@@ -23,17 +23,56 @@
 
 1. 유지보수가 용이하도록 프로그램을 **구조화해서** 리팩토링 해주세요.
 2. 향후 서버에서 전달받을 json 포맷이 제공되었을 때 **최소의 변경**으로 적용할 수 있도록 구성 해주세요.
-  - src/redux/apis/Order.ts 에 /** 향후 서버에서 전달받을 json 포맷이 제공되었을 때 적용할 수 있는 코드 */ 를 주석으로 작성함
+  - src/redux/apis/Order.ts 에 /** 향후 서버에서 전달받을 json 포맷이 제공되었을 때 적용할 수 있는 코드 */ 로 주석으로 작성함
 3. 리팩토링 된 프로그램의 구조를 설명하는 간단한 설명서(또는 다이어그램)를 제공 해주세요.
+
+src/
+│
+├── App.tsx
+│
+├── assets/
+│   └── images/
+│       ├── constants.ts
+│       └── order.json
+│
+├── components/
+│   ├── common/
+│   │   ├── AddCommas.tsx
+│   │   ├── Header.tsx
+│   │   └── Loading.tsx
+│   └── myOrder/
+│       ├── OrderInfo.tsx
+│       ├── ShippingInfo.tsx
+│       └── ProductInfo.tsx
+│
+├── pages/
+│   ├── Main.tsx
+│   └── MyOrder.tsx
+│
+└── redux/
+    ├── apis/
+    │   └── Order.ts
+    ├── slices/
+    │   └── myOrderSlice.ts
+    ├── types/
+    │   └── myOrder/
+    │       ├── Order.ts
+    │       ├── Shipping.ts
+    │       └── Product.ts
+    └── store.ts
+    
+    
 4. 변경된 json 포맷이 예상과 다를 때 처리 방법에 대한 설명 포함.
-  - src/redux/apis/Order.ts 에 /** 변경된 json 포맷이 예상과 다를 때 처리 방법 */ 을 주석으로 작성함
+  - src/redux/apis/Order.ts 에 /** 변경된 json 포맷이 예상과 다를 때 처리 방법 */ 으로 주석으로 작성함
 
 ## 테크스택
 
 - React
 - Typescript
-- (필요 시 환경 및 언어를 변경하실 수 있습니다.)
-- (필요 시 라이브러리를 추가해서 사용하실 수 있습니다.)
+- Redux-Toolkit
+- React-Router
+- Tailwind CSS
+- Axios
 
 ## 중점사항
 
