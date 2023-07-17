@@ -11,6 +11,7 @@ import {
   SHIPPING_MESSAGE,
   TRACKING_NUMBER,
 } from '../../assets/constants';
+import { addCommas } from '../common/AddCommas';
 
 const ShippingInfo: React.FC<{ shipping: Shipping }> = ({ shipping }) => (
   <div>
@@ -23,7 +24,7 @@ const ShippingInfo: React.FC<{ shipping: Shipping }> = ({ shipping }) => (
     <div>
       {SHIPPING_FEE}
       {COLON}
-      {shipping.shippingFee}
+      {addCommas(shipping.shippingFee)}
       {KOR_WON}
     </div>
     <div>

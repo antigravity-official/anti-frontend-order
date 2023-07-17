@@ -12,6 +12,7 @@ const PRODUCT_LIST = '상품목록';
 const PRODUCT_NAME = '상품명';
 const PRICE = '가격';
 const ORDER_INFO = '주문정보';
+const EA = '개';
 
 // components > myOrder > ShippingInfo
 const SHIPPING_INFO = '배송정보';
@@ -30,9 +31,10 @@ export {
   PRODUCT_NAME,
   PRICE,
   ORDER_INFO,
+  EA,
   SHIPPING_INFO,
   TRACKING_NUMBER,
   SHIPPING_FEE,
   SHIPPING_ADDRESS,
-  SHIPPING_MESSAGE
+  SHIPPING_MESSAGE,
 };

@@ -3,6 +3,7 @@ import { Order } from '../models/Order';
 import { fetchMyOrder, parseOrder } from '../apis/Order';
 import OrderInfo from '../components/myOrder/OrderInfo';
 import ShippingInfo from '../components/myOrder/ShippingInfo';
+import { Loading } from '../components/common/Loading';
 
 function App() {
   const [isLoading, setLoading] = useState(false);
@@ -25,8 +26,8 @@ function App() {
 
   return (
     <div>
-      {isLoading ? (
-        <div>Loading...</div>
+      {!isLoading ? (
+        <Loading />
       ) : (
         <>
           {orderInfo && <OrderInfo order={orderInfo} />}

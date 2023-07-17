@@ -1,6 +1,7 @@
 import React from 'react';
 import { Order } from '../../models/Order';
 import { COLON, KOR_WON, ORDER_DATE, ORDER_NUMBER, TOTAL_AMOUNT } from '../../assets/constants';
+import { addCommas } from '../common/AddCommas';
 
 const OrderInfo: React.FC<{ order: Order }> = ({ order }) => (
   <div>
@@ -17,7 +18,7 @@ const OrderInfo: React.FC<{ order: Order }> = ({ order }) => (
     <div>
       {TOTAL_AMOUNT}
       {COLON}
-      {order.amount}
+      {addCommas(order.amount)}
       {KOR_WON}
     </div>
   </div>
