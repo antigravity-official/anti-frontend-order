@@ -10,7 +10,7 @@ export const parseOrder = (json: any): Order => {
     id: json.id,
     orderAt: new Date(json.orderAt),
     amount: json.amount,
-    shipping: json.shippings,
-    products: json.products
+    shippings: json.shippings,
+    products: json.products,
   };
 };
