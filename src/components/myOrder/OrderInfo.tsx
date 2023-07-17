@@ -1,11 +1,25 @@
 import React from 'react';
 import { Order } from '../../models/Order';
+import { COLON, KOR_WON, ORDER_DATE, ORDER_NUMBER, TOTAL_AMOUNT } from '../../assets/constants';
 
 const OrderInfo: React.FC<{ order: Order }> = ({ order }) => (
   <div>
-    <div>주문번호: {order.id}</div>
-    <div>주문일: {order.orderAt.toLocaleString()}</div>
-    <div>총 결제금액: {order.amount}원</div>
+    <div>
+      {ORDER_NUMBER}
+      {COLON}
+      {order.id}
+    </div>
+    <div>
+      {ORDER_DATE}
+      {COLON}
+      {order.orderAt.toLocaleString()}
+    </div>
+    <div>
+      {TOTAL_AMOUNT}
+      {COLON}
+      {order.amount}
+      {KOR_WON}
+    </div>
   </div>
 );
 

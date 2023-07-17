@@ -1,13 +1,25 @@
 import React from 'react';
 import { OrderProduct } from '../../models/Product';
+import { COLON, KOR_WON, ORDER_INFO, PRICE, PRODUCT_LIST, PRODUCT_NAME } from '../../assets/constants';
 
 const ProductInfo: React.FC<{ product: OrderProduct }> = ({ product }) => (
   <div>
-    <h2>상품 목록</h2>
-    <div>상품명: {product.name}</div>
-    <div>가격: {product.price}원</div>
+    <h2>{PRODUCT_LIST}</h2>
     <div>
-      주문정보: {product.stock.color}/{product.stock.band}/{product.stock.cup} {product.stock.quantity}개
+      {PRODUCT_NAME}
+      {COLON}
+      {product.name}
+    </div>
+    <div>
+      {PRICE}
+      {COLON}
+      {product.price}
+      {KOR_WON}
+    </div>
+    <div>
+      {ORDER_INFO}
+      {COLON}
+      {product.stock.color}/{product.stock.band}/{product.stock.cup} {product.stock.quantity}개
     </div>
   </div>
 );

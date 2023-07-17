@@ -2,16 +2,39 @@ import React from 'react';
 import { Shipping } from '../../models/Shipping';
 import ProductInfo from './ProductInfo';
 import { OrderProduct } from '../../models/Product';
+import {
+  COLON,
+  KOR_WON,
+  SHIPPING_ADDRESS,
+  SHIPPING_FEE,
+  SHIPPING_INFO,
+  SHIPPING_MESSAGE,
+  TRACKING_NUMBER,
+} from '../../assets/constants';
 
 const ShippingInfo: React.FC<{ shipping: Shipping }> = ({ shipping }) => (
   <div>
-    <h2>배송 정보</h2>
-    <div>송장번호: {shipping.trackingNumber}</div>
-    <div>배송료: {shipping.shippingFee}원</div>
+    <h2>{SHIPPING_INFO}</h2>
     <div>
-      주소: [{shipping.post}] {shipping.address}
+      {TRACKING_NUMBER}
+      {COLON}
+      {shipping.trackingNumber}
     </div>
-    <div>메시지: {shipping.message}</div>
+    <div>
+      {SHIPPING_FEE}
+      {COLON}
+      {shipping.shippingFee}
+      {KOR_WON}
+    </div>
+    <div>
+      {SHIPPING_ADDRESS}
+      {COLON}[{shipping.post}] {shipping.address}
+    </div>
+    <div>
+      {SHIPPING_MESSAGE}
+      {COLON}
+      {shipping.message}
+    </div>
     {shipping.products.map((product: OrderProduct, index: number) => (
       <ProductInfo key={index} product={product} />
     ))}
