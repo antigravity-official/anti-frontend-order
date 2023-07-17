@@ -46,15 +46,15 @@ function MyOrder() {
   return (
     <div>
       <Header />
-      <div className="flex">
-        <div className="w-full flex flex-col justify-center">
+      <div className="flex w-[1280px] m-auto pt-[30px]">
+        <div className="flex flex-col justify-center">
           <h2 className="text-[1.7rem] font-bold text-center mt-[50px] mb-[20px]">{ORDER_INQUIRY}</h2>
           <h4 className="text-[15px] font-semibold mb-[10px] text-left">{ORDER_PRODUCT_INFO}</h4>
-          <div className="w-full grid grid-cols-1 border rounded-md px-16 py-12">
+          <div className="grid grid-cols-1 border rounded-lg px-16 py-12">
             <div className="border-b pb-6">{orderInfo && <OrderInfo order={orderInfo} />}</div>
             <div className="grid grid-cols-1 m-auto mt-6">
               {orderInfo?.shippings?.map((shipping: Shipping, index: number) => (
-                <div key={index}>
+                <div key={index} className="border rounded-lg p-10 mb-[20px]">
                   <ShippingInfoWrapper shippings={[shipping]} />
                 </div>
               ))}

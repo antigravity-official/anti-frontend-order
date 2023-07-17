@@ -12,8 +12,8 @@ const Header = () => {
     navigate('/');
   };
   return (
-    <>
-      <div className="fixed top-0 right-1/2 w-[1280px] h-[140px] translate-x-1/2">
+    <div className="fixed z-50 top-0 right-1/2 translate-x-1/2 bg-white w-screen border-b-[1px] border-[rgba(190, 190, 190, 0.7)] ">
+      <div className="w-[1280px] h-[140px] m-auto">
         <div className="flex justify-between items-center mt-[40px]">
           <img
             onClick={moveToMain}
@@ -28,8 +28,7 @@ const Header = () => {
           </ul>
         </div>
       </div>
-      <div className="absolute top-[140px] right-0 border-b-[1px] border-[rgba(190, 190, 190, 0.7)] w-screen"></div>
-    </>
+    </div>
   );
 };
 

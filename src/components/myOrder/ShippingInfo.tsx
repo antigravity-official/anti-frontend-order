@@ -13,7 +13,7 @@ import {
 import { addCommas } from '../common/AddCommas';
 
 const ShippingInfo: React.FC<{ shipping: Shipping }> = ({ shipping }) => (
-  <div className="flex space-x-8 items-center leading-8 mr-[20px]">
+  <div className="flex space-x-8 items-center leading-8 ">
     <div>
       <div>
         {TRACKING_NUMBER}

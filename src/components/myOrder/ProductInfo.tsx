@@ -5,8 +5,11 @@ import { addCommas } from '../common/AddCommas';
 
 const ProductInfo: React.FC<{ product: OrderProduct }> = ({ product }) => (
   <div className="grid grid-flow-col text-right">
-    <h2 className="flex items-center justify-center ml-[50px] border rounded-2xl border-[#ff2549]">{PRODUCT_LIST}</h2>
+    <div className="ml-[80px] border rounded-2xl overflow-hidden w-[120px] mb-[15px]">
+      <img src={product.imageUrls[0]} alt={product.name} />
+    </div>
     <div className="leading-7">
+      <div className="mb-[8px]">{PRODUCT_LIST}</div>
       <div>
         {PRODUCT_NAME}
         {COLON}

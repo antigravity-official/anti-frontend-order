@@ -9,7 +9,7 @@ const ORDER_DATE = '주문일자';
 const TOTAL_AMOUNT = '총 결제금액';
 
 // components > myOrder > ProductInfo
-const PRODUCT_LIST = '상품정보';
+const PRODUCT_LIST = '[ 상품정보 ]';
 const PRODUCT_NAME = '상품명';
 const PRICE = '가격';
 const ORDER_INFO = '주문정보';
