@@ -5,7 +5,7 @@ import MyOrder from './pages/MyOrder';
 
 const App = () => {
   return (
-    <div className="m-auto mt-[140px]">
+    <div className="m-auto">
       <Routes>
         <Route path="/" element={<Main />} />
         <Route path="/order" element={<MyOrder />} />

@@ -44,7 +44,7 @@ function MyOrder() {
   }
 
   return (
-    <div>
+    <div className="mt-[140px]">
       <Header />
       <div className="flex w-[1280px] m-auto pt-[30px]">
         <div className="flex flex-col justify-center">
