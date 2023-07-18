@@ -1,6 +1,8 @@
+// import axios from 'axios'
+// import { fetchMyOrder } from '../apis/Order';
+
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { Order } from '../types/myOrder/Order';
-// import { fetchMyOrder } from '../apis/Order';
 
 export interface MyOrderState {
   orderInfo: Order | null;
