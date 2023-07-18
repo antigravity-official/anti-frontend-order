@@ -26,7 +26,7 @@
 
 3. 리팩토링 된 프로그램의 구조를 설명하는 간단한 설명서(또는 다이어그램)를 제공 해주세요.
 
-  ![스크린샷 2023-07-18 오전 5 11 23](https://github.com/doradora523/anti-frontend-order/assets/94670754/3b7f5ac8-6952-4ae2-b3a6-cb3e0e41f024)
+  ![스크린샷 2023-07-18 오후 6 21 59](https://github.com/doradora523/anti-frontend-order/assets/94670754/9512aa3e-7659-4899-af02-7774cec43f05)
   구조에 대한 설명은 1번에 자세히 적어두었습니다.  
 
 ***
