@@ -1,5 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { Order } from '../types/myOrder/Order';
+// import { fetchMyOrder } from '../apis/Order';
 
 export interface MyOrderState {
   orderInfo: Order | null;
@@ -31,6 +32,22 @@ const myOrderSlice = createSlice({
       state.error = action.payload;
     },
   },
+  // extraReducers: (builder) => {
+  //   builder
+  //     .addCase(fetchMyOrder.pending, (state: MyOrderState) => {
+  //       state.loading = true;
+  //       state.error = null;
+  //     })
+  //     .addCase(fetchMyOrder.fulfilled, (state: MyOrderState, action: PayloadAction<Order>) => {
+  //       state.orderInfo = action.payload;
+  //       state.loading = false;
+  //       state.error = null;
+  //     })
+  //     .addCase(fetchMyOrder.rejected, (state: MyOrderState, action: PayloadAction<SerializedError>) => {
+  //       state.loading = false;
+  //       state.error = action.error.message;
+  //     });
+  // },
 });
 
 export const { fetchMyOrderStart, fetchMyOrderSuccess, fetchMyOrderFailure } = myOrderSlice.actions;

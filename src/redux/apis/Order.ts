@@ -1,4 +1,7 @@
+/** 서버에서 전달받을 api요청에 사용할 프레임워크 */
 // import axios from 'axios';
+// import { createAsyncThunk } from '@reduxjs/toolkit';
+
 import { Order } from '../types/myOrder/Order';
 import assetOrder from '../../assets/order.json';
 
@@ -21,21 +24,21 @@ export const parseOrder = (json: Order): Order => {
 };
 
 /** 향후 서버에서 전달받을 json 포맷이 제공되었을 때 적용할 수 있는 코드 */
-// export const fetchMyOrder = (orderId: number, userId: string): Promise<Order> => {
-//   const REQ_URL = `https://fittingnote.com/myshop/order/list/${orderId}`;
+// export const fetchMyOrder = createAsyncThunk(
+//   'myOrder/fetchMyOrder',
+//   async (orderId: number, userId: string) => {
+//     const REQ_URL = `https://fittingnote.com/myshop/order/list/${orderId}`;
 
-//   return axios
-//     .get(REQ_URL, {
+//     const response = await axios.get(REQ_URL, {
 //       headers: {
 //         Authorization: `Bearer ${userId}`,
 //       },
-//     })
-//     .then((response) => {
-//       const data = response.data;
-//       const myOrder = parseOrder(data);
-//       return myOrder;
 //     });
-// };
+//     const data = response.data;
+//     const myOrder = parseOrder(data);
+//     return myOrder;
+//   }
+// );
 
 /** 변경된 json 포맷이 예상과 다를 때 처리 방법 */
 // export const parseOrder = (json: Order): Order => {
