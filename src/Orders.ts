@@ -1,4 +1,4 @@
-import { Order, OrderProduct } from "./Models";
+import { Order, Shipping, OrderProduct } from "./Models";
 import assetOrder from "./assets/order.json";
 
 export const fetchMyOrder = (onCompleted: (json: object) => void) => {
@@ -13,8 +13,30 @@ export const parseOrder = (json: any, onCompleted: (order: Order) => void) => {
       id: json.id,
       orderAt: new Date(json.orderAt),
       amount: json.amount,
-      products: json.products,
-      shipping: json.shipping,
+      shippings: [
+        {
+          id: json.shipping.id,
+          trackingNumber: json.shipping.trackingNumber,
+          shippingFee: json.shipping.shippingFee,
+          address: json.shipping.address,
+          post: json.shipping.post,
+          message: json.shipping.message,
+          products: json.products.map((product: any) => {
+            return {
+              id: product.id,
+              name: product.name,
+              price: product.price,
+              imageUrls: product.imageUrls,
+              stock: {
+                color: product.stock.color,
+                band: product.stock.band,
+                cup: product.stock.cup,
+                quantity: product.stock.quantity,
+              },
+            };
+          }),
+        },
+      ],
     };
     onCompleted(order);
   }, 500);
@@ -24,27 +46,30 @@ export const presentOrder = (order: Order) => {
   let output: string[] = [];
   const println = (text: string) => output.push(text);
 
-  println(`주문번: ${order.id}`);
+  println(`주문번호: ${order.id}`);
   println(`주문일: ${order.orderAt}`);
   println(`총 결제금액: ${order.amount}원`);
   println(``);
-  println(`----------------------------`);
-  println(`[상품목록]`);
-  println(``);
-  order.products.forEach((p: OrderProduct) => {
-    println(`상품명: ${p.name}`);
-    println(`가격: ${p.price}원`);
-    println(
-      `주문정보: ${p.stock.color}/${p.stock.band}/${p.stock.cup} ${p.stock.quantity}개`
-    );
+
+  order.shippings?.forEach((shipping: Shipping, shippingIndex: number) => {
+    println(`----------------------------`);
+    println(`[배송정보 ${shippingIndex + 1}]`);
+    println(`송장번호: ${shipping.trackingNumber}`);
+    println(`배송료: ${shipping.shippingFee}원`);
+    println(`주소: [${shipping.post}] ${shipping.address}`);
+    println(`메시지: ${shipping.message}`);
     println(``);
+    println(`[상품목록]`);
+    println(``);
+    shipping.products.forEach((product: OrderProduct, productIndex: number) => {
+      println(`상품명: ${product.name}`);
+      println(`가격: ${product.price}원`);
+      println(
+        `주문정보: ${product.stock.color}/${product.stock.band}/${product.stock.cup} ${product.stock.quantity}개`
+      );
+      println(``);
+    });
   });
-  println(`----------------------------`);
-  println(`[배송정보]`);
-  println(`송장번호: ${order.shipping.trackingNumber}`);
-  println(`배송료: ${order.shipping.shippingFee}원`);
-  println(`주소: [${order.shipping.post}] ${order.shipping.address}`);
-  println(`메시지: ${order.shipping.message}`);
 
   return output;
 };
