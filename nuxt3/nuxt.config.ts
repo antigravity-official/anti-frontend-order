@@ -14,14 +14,12 @@ export default defineNuxtConfig({
   },
   modules: [
     '@nuxt/ui',
-    '@nuxt/image',
     '@nuxtjs/i18n',
     '@nuxtjs/eslint-module',
     'nuxt-icon',
     'nuxt-time',
     '@unocss/nuxt',
     '@pinia/nuxt',
-    'dayjs-nuxt',
     '@pinia-plugin-persistedstate/nuxt'
   ],
   css: [
@@ -65,11 +63,5 @@ export default defineNuxtConfig({
     ],
     defaultLocale: 'ko',
     strategy: 'no_prefix'
-  },
-  dayjs: {
-    locales: ['ko'],
-    plugins: ['relativeTime', 'utc', 'timezone'],
-    defaultLocale: 'ko',
-    defaultTimezone: 'Asia/Seoul'
   }
 })

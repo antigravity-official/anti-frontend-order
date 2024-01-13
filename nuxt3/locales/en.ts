@@ -1,6 +1,6 @@
 export default {
   header: {
-    title: 'Anti FE Problem'
+    title: 'Fitting Note: 이연주'
   },
   button: {
     back: 'Go back',
@@ -14,6 +14,7 @@ export default {
     quantity: '{quantity} Cnt',
     address: 'Address: [{postNumber}] {address}',
     loading: 'Loading',
+    order: 'Order information',
     userId: 'User ID: ',
     orderNumber: 'Order number: ',
     orderDate: 'Order date: ',

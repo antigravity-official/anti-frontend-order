@@ -16,26 +16,16 @@ defineEmits([
     <ALabelText
       custom-class="flex flex-wrap justify-between w-full gap-2 text-lg"
       :label="$t('text.userId')"
-    >
-      <template #content>
-        <span>
-          {{ orderData?.userId }}
-        </span>
-      </template>
-    </ALabelText>
+      :text="orderData?.userId"
+    />
     <ALabelText
       custom-class="flex flex-wrap justify-between w-full gap-2 text-lg"
       :label="$t('text.orderNumber')"
-    >
-      <template #content>
-        <span>
-          {{ orderData?.id }}
-        </span>
-      </template>
-    </ALabelText>
-
+      :text="orderData?.id"
+    />
     <ALabelText
       custom-class="flex flex-wrap justify-between w-full gap-2 text-lg"
+      :disable-slot="false"
       :label="$t('text.orderDate')"
     >
       <template #content>
@@ -54,18 +44,12 @@ defineEmits([
     <ALabelText
       custom-class="flex flex-wrap justify-between w-full gap-2 text-lg"
       :label="$t('text.orderAmount')"
-    >
-      <template #content>
-        <span>
-          {{ $t('text.krw', { amount: comma(orderData?.amount) }) }}
-        </span>
-      </template>
-    </ALabelText>
-    <div
-      class="flex justify-center w-full mt-4 text-2xl font-bold pointer"
-      @click="$emit('click:order-list')"
-    >
-      {{ $t('button.shipping') }}
-    </div>
+      :text="$t('text.krw', { amount: comma(orderData?.amount) })"
+    />
+    <AButton
+      custom-class="flex justify-center mt-4 text-2xl pointer border rounded-xl border-cool-800 p-2 hover:bg-cool-800 hover: opacity-80 transition ease-in-out delay-50"
+      :btn-name="$t('button.shipping')"
+      @click:button="$emit('click:order-list')"
+    />
   </div>
 </template>

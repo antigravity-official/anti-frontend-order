@@ -18,7 +18,7 @@ const productsData = computed(() => {
       label-class="text-2xl font-bold mx-2"
       :text="$t('order.title')"
     />
-    <LazyOrderProductsCard
+    <LazyOrderCard
       v-for="product in productsData"
       v-show="!pending"
       :key="product.id"

@@ -5,7 +5,12 @@ export const useUtil = () => {
     return String(val ?? 0).replace(uncommaRegex, '$1,')
   }
 
+  const productInfoText = (color: string, band: string, cup: string, quantityText: string) => {
+    return color.concat('/', band, '/', cup, ' ', quantityText)
+  }
+
   return {
-    comma
+    comma,
+    productInfoText
   }
 }

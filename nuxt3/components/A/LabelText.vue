@@ -4,12 +4,16 @@ withDefaults(
   defineProps<{
     customClass?: string,
     labelClass?: string,
-    label?: string
+    label?: string,
+    text?: string | number,
+    disableSlot?: boolean
   }>(),
   {
     customClass: '',
     labelClass: '',
-    label: ''
+    label: '',
+    text: '',
+    disableSlot: true
   }
 )
 
@@ -21,6 +25,12 @@ withDefaults(
       :label-class="labelClass"
       :text="label"
     />
-    <slot name="content" />
+    <span v-if="disableSlot">
+      {{ text }}
+    </span>
+    <slot
+      v-else
+      name="content"
+    />
   </div>
 </template>

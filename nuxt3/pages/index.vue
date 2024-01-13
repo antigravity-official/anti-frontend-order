@@ -33,9 +33,12 @@ pending.value = pendingOrder.value
       label-class="flex justify-center items-center w-auto m-20 text-2xl"
       :text="$t('text.loading')"
     />
-    <IndexOrderList
-      v-else
-      @click:order-list="navigateTo('/shipping')"
-    />
+    <div v-else>
+      <LazyALabel
+        label-class="text-2xl font-bold m-8"
+        :text="$t('text.order')"
+      />
+      <IndexOrderList @click:order-list="navigateTo('/shipping')" />
+    </div>
   </div>
 </template>

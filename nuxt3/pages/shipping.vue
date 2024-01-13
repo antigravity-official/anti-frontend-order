@@ -2,8 +2,6 @@
 
 const { orderData, pending } = storeToRefs(useOrderStore())
 
-console.log(pending.value)
-
 </script>
 
 <template>
@@ -29,7 +27,7 @@ console.log(pending.value)
         v-if="orderData?.shipping"
         :order-detail-data="orderData?.shipping"
       />
-      <LazyOrderProductsCard
+      <LazyOrderCard
         v-for="product in orderData?.products"
         v-show="!pending"
         :key="product.id"

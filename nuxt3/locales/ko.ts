@@ -1,6 +1,6 @@
 export default {
   header: {
-    title: 'Anti FE Problem'
+    title: '피팅노트: 이연주'
   },
   button: {
     back: '뒤로가기',
@@ -14,6 +14,7 @@ export default {
     krw: '{amount} 원',
     address: '주소: [{postNumber}] {address}',
     loading: '로딩중',
+    order: '구매정보',
     userId: '아이디: ',
     orderNumber: '주문번호: ',
     orderDate: '주문일: ',
