@@ -1,0 +1,33 @@
+{
+  "name": "anti-gravity-in-nuxt3",
+  "private": true,
+  "scripts": {
+    "dev": "nuxt dev --port 4010",
+    "build": "nuxt build",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare"
+  },
+  "devDependencies": {
+    "@nuxt/image": "^1.2.0",
+    "@nuxt/ui": "^2.12.0",
+    "@nuxtjs/eslint-config-typescript": "^12.1.0",
+    "@nuxtjs/eslint-module": "^4.1.0",
+    "@nuxtjs/i18n": "^8.0.0",
+    "@pinia-plugin-persistedstate/nuxt": "^1.2.0",
+    "@pinia/nuxt": "^0.5.1",
+    "@typescript-eslint/parser": "^6.18.1",
+    "@unocss/nuxt": "^0.58.3",
+    "@unocss/preset-uno": "^0.58.3",
+    "@unocss/preset-web-fonts": "^0.58.3",
+    "dayjs-nuxt": "^2.1.9",
+    "eslint": "^8.56.0",
+    "eslint-plugin-nuxt": "^4.0.0",
+    "nuxt": "^3.9.1",
+    "nuxt-icon": "^0.6.8",
+    "nuxt-time": "^0.1.1",
+    "pinia": "^2.1.7",
+    "sass": "^1.69.7",
+    "typescript": "^5.3.3"
+  }
+}
