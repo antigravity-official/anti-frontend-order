@@ -4,30 +4,22 @@
 
 interface DefaultResponse {
   // Api 호출 시 기본적으로 받아오는 response 구조.
-  // 변경된 data format 전송시, formatType instance 제거
+  // 변경된 data format 전송시, formatType 제거
   success: boolean;
   responseCode: number | string;
   message: string;
   formatType?: 'old' | 'new';
-  data: OldOrder | NewOrder | null;
+  res: Order | null;
 }
 
-interface OldOrder {
-  // 기존 order data를 받아오는 경우에만 사용되는 인터페이스.
+interface Order {
+  // 새로운 order 포멧을 받을 경우, products 제거
   id: number;
   userId: string;
-  orderAt: string | Date;
+  orderAt: string;
   amount: number;
-  products: Product[];
-  shipping: Shipping;
-}
-
-interface NewOrder {
-  id: number;
-  userId: string;
-  orderAt: string | Date;
-  amount: number;
-  shippings: Shipping[];
+  products?: Product[];
+  shipping: Shipping[] | Shipping;
 }
 
 interface Stock {
@@ -54,5 +46,5 @@ interface Shipping {
   orderUserName: string;
   orderUserMobile: string;
   message: string;
-  products?: Product[]; // 기존 order data가 변경되는 시점에서는 products instance의 옵셔널을 허용하지 않도록 변경.
+  products?: Product[]; // 기존 order data가 변경되는 시점에서는 products의 옵셔널을 허용하지 않도록 변경.
 }

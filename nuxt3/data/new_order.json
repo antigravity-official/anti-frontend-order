@@ -1,9 +1,9 @@
 {
   "id": 100,
-  "userId": "12F45-23AF1-1E12Z-1F21D",
-  "orderAt": "2023-01-01 12:13:14",
-  "amount": 77700,
-  "shippings": [
+  "userId": "54F21-F1AF1-2Z12Z-1F21D",
+  "orderAt": "2024-01-01 12:13:14",
+  "amount": 55500,
+  "shipping": [
     {
       "id": 8,
       "trackingNumber": "T08912739410",

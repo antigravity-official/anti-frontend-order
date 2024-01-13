@@ -1,5 +1,6 @@
 {
   "i18n-ally.localesPaths": [
     "nuxt3/locales"
-  ]
+  ],
+  "i18n-ally.keystyle": "nested"
 }

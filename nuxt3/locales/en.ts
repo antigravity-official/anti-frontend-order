@@ -5,35 +5,33 @@ export default {
   button: {
     back: 'Go back',
     check: 'Check order',
-    shipping: 'Track shipment',
-    orderUser: 'Search orderer',
-    close: 'Close',
-    delete: 'Delete'
+    shipping: 'Track shipment'
   },
   text: {
     ko: 'Korean',
     en: 'English',
-    orderNumber: 'Order number',
-    orderDate: 'Order date',
-    orderAmount: 'Total payment amount'
+    krw: '{amount} Won',
+    quantity: '{quantity} Cnt',
+    address: 'Address: [{postNumber}] {address}',
+    loading: 'Loading',
+    userId: 'User ID: ',
+    orderNumber: 'Order number: ',
+    orderDate: 'Order date: ',
+    orderAmount: 'Total payment amount: '
   },
   order: {
     title: 'Product list',
-    productName: 'Product name',
-    price: 'Price',
-    orderInfo: 'Order information',
-    color: 'Color',
-    band: 'Band',
-    cup: 'Cup',
-    quantity: 'Quantity'
+    productName: 'Product name: ',
+    price: 'Price: ',
+    orderInfo: 'Order information: '
   },
   shipping: {
     title: 'Track shipment',
-    orderUserName: 'Orderer name',
-    orderUserMobile: 'Orderer contact',
-    trackingNumber: 'Tracking number',
-    shippingFee: 'Shipping fee',
-    address: 'Address',
-    message: 'Shipping message'
+    orderUserName: 'Orderer name: ',
+    orderUserMobile: 'Orderer contact: ',
+    trackingNumber: 'Tracking number: ',
+    shippingFee: 'Shipping fee: ',
+    address: 'Address: ',
+    message: 'Shipping message: '
   }
 }

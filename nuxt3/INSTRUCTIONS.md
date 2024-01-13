@@ -18,6 +18,19 @@
 
 > 위의 데이터 셋을 통해서 개발진행
 
+응답 객체에 어떤 값을 전달해줄지 모르는 상태에서의 프로젝트이므로, 기본적으로 아래와 같은
+응답 객체가 전달된다는 가정하에 진행입니다.
+
+```interface
+response: {
+  success: boolean,
+  responseCode: number | string,
+  message: string,
+  formatType: 'old' | 'new',
+  res: Order | null
+}
+```
+
 기본적인 Atomic Structure 를 기반으로 각 기능에 필요한 컴포넌트를 분할하여,
 향후에도 사용 가능한 구조로 생성할 예정 입니다.
 

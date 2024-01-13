@@ -1,20 +1,8 @@
-<template>
-  <div>
-    <div v-if="pending">
-      로딩중!
-    </div>
-    <div v-else>
-      <AButton @click:button="navigateTo('/order')" />
-      {{ fetchData }}
-    </div>
-  </div>
-</template>
-
 <script setup lang="ts">
 
-// const { orderData } = storeToRefs(useOrderStore())
+const { orderData, pending } = storeToRefs(useOrderStore())
 
-const { data: fetchData, pending } = await useAsyncData('order', async () => {
+const { pending: pendingOrder, refresh: refreshOrderData } = await useAsyncData('order', async () => {
   const { data } = await useFetch('/api/order', {
     method: 'GET',
     headers: {
@@ -23,15 +11,31 @@ const { data: fetchData, pending } = await useAsyncData('order', async () => {
     immediate: true
   })
 
-  console.log(data.value?.success)
+  if (!data.value) { return }
+  if (!data.value.success && !data.value.res) {
+    console.warn('Warning: Data fetch failed')
+    return
+  }
 
-  return data
+  orderData.value = data.value.res ?? undefined
+  pending.value = false
 })
 
-console.log(fetchData.value)
+refreshOrderData()
+pending.value = pendingOrder.value
 
 </script>
 
-<style scoped lang="scss">
-
-</style>
+<template>
+  <div>
+    <ALabel
+      v-if="pendingOrder"
+      label-class="flex justify-center items-center w-auto m-20 text-2xl"
+      :text="$t('text.loading')"
+    />
+    <IndexOrderList
+      v-else
+      @click:order-list="navigateTo('/shipping')"
+    />
+  </div>
+</template>

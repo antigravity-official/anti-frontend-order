@@ -4,16 +4,19 @@ export const useOrderStore = defineStore('order', () => {
   /**
    * ! Pinia State !
    * @param orderData 주문 데이터
+   * @param pending 주문 데이터 조회 중 여부
   */
 
-  // 새로운 주문 타입이 들어올 경우, 기존 타입은 제거 처리
-  const orderData = ref<NewOrder | OldOrder>()
+  const orderData = ref<Order>()
+  const pending = ref(false)
 
   return {
-    orderData
+    orderData,
+    pending
   }
 }, {
   persist: {
-    storage: persistedState.localStorage
+    // 주문내역 조회는 새션스토리지에 저장하여, 새션이 만료되면 휘발될 수 있도록 처리
+    storage: persistedState.sessionStorage
   }
 })

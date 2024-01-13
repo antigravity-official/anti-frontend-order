@@ -1,6 +1,6 @@
 <template>
   <div>
-    <AHeader />
+    <Header />
     <slot />
   </div>
 </template>

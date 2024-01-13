@@ -32,12 +32,25 @@ body {
   display: none;
 }
 
+.flicker {
+  animation: opacity 1.5s ease-in-out infinite;
+}
+
+@keyframes opacity {
+  45% {
+    opacity: 1;
+  }
+  65% {
+    opacity: 0.8;
+  }
+}
+
 .page-enter-active,
 .page-leave-active {
-  transition: all .1s ease-in-out;
+  transition: all .15s ease-in-out;
 }
 
 .page-enter-from,
 .page-leave-to {
-  opacity: .3;
+  opacity: 0.3;
 }

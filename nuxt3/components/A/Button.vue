@@ -1,12 +1,3 @@
-<template>
-  <div
-    :class="customClass"
-    @click=" $emit('click:button')"
-  >
-    {{ btnName }}
-  </div>
-</template>
-
 <script setup lang="ts">
 
 withDefaults(
@@ -26,10 +17,11 @@ defineEmits([
 
 </script>
 
-<style scoped lang="scss">
-
-div {
-  cursor: pointer;
-}
-
-</style>
+<template>
+  <div
+    :class="customClass"
+    @click=" $emit('click:button')"
+  >
+    {{ btnName }}
+  </div>
+</template>
